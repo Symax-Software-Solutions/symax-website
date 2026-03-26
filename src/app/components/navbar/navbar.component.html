@@ -57,6 +57,7 @@
         </div>
       </div>
 
+      <a class="navbar__link" routerLink="/events" data-testid="nav-portfolio">Portfolio</a>
       <a class="navbar__link" routerLink="/racing">Racing</a>
       <a class="navbar__link" href="/#contact" (click)="scrollToContact()">Contact</a>
       <button class="btn btn--primary btn--sm" (click)="scrollToContact()">Get in Touch</button>
@@ -83,6 +84,7 @@
       🤖 Agentic Crew <span class="navbar__dropdown-badge">Coming Soon</span>
     </a>
     <div class="navbar__mobile-divider"></div>
+    <a class="navbar__mobile-link" routerLink="/events" (click)="closeMobile()" data-testid="nav-portfolio-mobile">Portfolio</a>
     <a class="navbar__mobile-link" routerLink="/racing" (click)="closeMobile()">Racing</a>
     <a class="navbar__mobile-link" href="#contact" (click)="closeMobile()">Contact</a>
     <button class="btn btn--primary" (click)="scrollToContact()">Get in Touch</button>

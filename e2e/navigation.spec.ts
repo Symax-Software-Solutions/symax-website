@@ -57,6 +57,15 @@ test.describe('Navigation', () => {
     expect(consoleErrors).toHaveLength(0);
   });
 
+  test('"Portfolio" link in navbar navigates to /events', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    await page.locator('[data-testid="nav-portfolio"]').click();
+    await expect(page).toHaveURL(/\/events/);
+    await expect(page.locator('.events-page')).toBeAttached();
+  });
+
   test('back navigation works (history)', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');

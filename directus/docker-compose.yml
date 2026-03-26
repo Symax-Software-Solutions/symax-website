@@ -1,0 +1,22 @@
+version: '3'
+services:
+  directus:
+    image: directus/directus:latest
+    ports:
+      - "8055:8055"
+    environment:
+      SECRET: "symax-directus-secret-change-in-prod"
+      DB_CLIENT: "sqlite3"
+      DB_FILENAME: "/directus/database/data.db"
+      ADMIN_EMAIL: "michael.voss@symaxsoftware.com"
+      ADMIN_PASSWORD: "SYmax2026!"
+      PUBLIC_URL: "http://localhost:8055"
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "http://localhost:4400"
+    volumes:
+      - directus_db:/directus/database
+      - directus_uploads:/directus/uploads
+
+volumes:
+  directus_db:
+  directus_uploads:

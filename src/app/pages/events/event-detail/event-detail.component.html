@@ -1,0 +1,157 @@
+<app-navbar></app-navbar>
+
+<main class="event-detail-page">
+
+  <!-- Loading -->
+  @if (loading()) {
+    <section class="event-detail-loading">
+      <div class="container">
+        <div class="event-detail-loading__spinner"></div>
+        <p>Loading event...</p>
+      </div>
+    </section>
+  }
+
+  <!-- Not Found -->
+  @if (!loading() && notFound()) {
+    <section class="event-detail-404" data-testid="event-not-found">
+      <div class="container">
+        <div class="event-detail-404__icon">🔍</div>
+        <h1>Event Not Found</h1>
+        <p>The event you're looking for doesn't exist or has been removed.</p>
+        <a routerLink="/events" class="btn btn--primary">← Back to Portfolio</a>
+      </div>
+    </section>
+  }
+
+  <!-- Event Content -->
+  @if (!loading() && event(); as ev) {
+
+    <!-- Hero -->
+    <section class="event-hero" data-testid="event-hero"
+      [style.background-image]="ev.cover_image ? 'url(' + ev.cover_image + ')' : ''">
+      <div class="event-hero__overlay"></div>
+      <div class="container event-hero__inner">
+        <a routerLink="/events" class="event-hero__back">← Back to Portfolio</a>
+        <div class="event-hero__tags">
+          @for (tag of ev.tags; track tag) {
+            <span class="event-hero__tag">{{ tag }}</span>
+          }
+        </div>
+        <h1 class="event-hero__title" data-testid="event-detail-title">{{ ev.title }}</h1>
+        <p class="event-hero__subtitle">{{ ev.subtitle }}</p>
+        <div class="event-hero__meta">
+          <span class="event-hero__flag">{{ ev.flag_emoji }}</span>
+          <span class="event-hero__location">{{ ev.location }}</span>
+          <span class="event-hero__date">{{ ev.date | date:'longDate' }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Description -->
+    @if (ev.description) {
+      <section class="event-description section">
+        <div class="container">
+          <div class="event-description__content" [innerHTML]="ev.description"></div>
+        </div>
+      </section>
+    }
+
+    <!-- Scoreboard -->
+    @if (ev.show_scoreboard && ev.phoenix_event_id) {
+      <section class="event-scoreboard section section--dark" data-testid="scoreboard-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-label">Results</span>
+            <h2>Live Scoreboard</h2>
+          </div>
+
+          <!-- Scoreboard loading -->
+          @if (scoreboardLoading()) {
+            <div class="scoreboard-loading" data-testid="scoreboard-loading">
+              <div class="scoreboard-loading__spinner"></div>
+              <p>Loading results...</p>
+            </div>
+          }
+
+          <!-- Scoreboard content -->
+          @if (!scoreboardLoading() && scoreboard().length > 0) {
+            <div class="scoreboard" data-testid="scoreboard">
+              <div class="scoreboard__screen">
+                <div class="scoreboard__topbar">
+                  <span class="scoreboard__dot scoreboard__dot--red"></span>
+                  <span class="scoreboard__dot scoreboard__dot--yellow"></span>
+                  <span class="scoreboard__dot scoreboard__dot--green"></span>
+                  <span class="scoreboard__topbar-title">Phoenix · {{ ev.title }}</span>
+                </div>
+                <div class="scoreboard__content">
+                  <div class="scoreboard__header-row">
+                    <span class="scoreboard__col scoreboard__col--pos" data-testid="scoreboard-header-pos">POS</span>
+                    <span class="scoreboard__col scoreboard__col--name" data-testid="scoreboard-header-rider">RIDER</span>
+                    <span class="scoreboard__col scoreboard__col--time" data-testid="scoreboard-header-time">TIME</span>
+                    <span class="scoreboard__col scoreboard__col--gap" data-testid="scoreboard-header-gap">GAP</span>
+                  </div>
+                  @for (row of scoreboard(); track row.pos) {
+                    <div class="scoreboard__row" [class.scoreboard__row--leader]="row.pos === 1">
+                      <span class="scoreboard__col scoreboard__col--pos">{{ row.pos }}</span>
+                      <span class="scoreboard__col scoreboard__col--name">{{ row.name }}</span>
+                      <span class="scoreboard__col scoreboard__col--time">{{ row.time }}</span>
+                      <span class="scoreboard__col scoreboard__col--gap">{{ row.gap }}</span>
+                    </div>
+                  }
+                  <div class="scoreboard__footer">
+                    <span class="scoreboard__live-indicator">
+                      <span class="scoreboard__live-dot"></span>
+                      LIVE
+                    </span>
+                    <span class="scoreboard__powered" data-testid="powered-by-phoenix">
+                      Powered by <a routerLink="/phoenix">Phoenix</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+
+          <!-- Scoreboard error -->
+          @if (!scoreboardLoading() && scoreboardError()) {
+            <div class="scoreboard-error" data-testid="scoreboard-error">
+              <p>⚠️ Results not available at the moment. Please check back later.</p>
+            </div>
+          }
+
+        </div>
+      </section>
+    }
+
+    <!-- Gallery -->
+    @if (ev.gallery && ev.gallery.length > 0) {
+      <section class="event-gallery section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-label">Photos</span>
+            <h2>Event Gallery</h2>
+          </div>
+          <div class="event-gallery__grid">
+            @for (photo of ev.gallery; track photo.id) {
+              <div class="event-gallery__item">
+                <img [src]="photo.directus_files_id" alt="Event photo" loading="lazy">
+              </div>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- Back CTA -->
+    <section class="event-back section">
+      <div class="container" style="text-align: center;">
+        <a routerLink="/events" class="btn btn--outline">← Back to Event Portfolio</a>
+      </div>
+    </section>
+
+  }
+
+</main>
+
+<app-footer></app-footer>
