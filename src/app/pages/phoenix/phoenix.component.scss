@@ -4,7 +4,7 @@
 
 .phoenix-hero {
   padding: 7rem 0 5rem;
-  background: radial-gradient(ellipse at 60% 40%, rgba(255, 90, 50, 0.08) 0%, transparent 60%),
+  background: radial-gradient(ellipse at 60% 40%, rgba(200, 66, 76, 0.08) 0%, transparent 60%),
               linear-gradient(180deg, #0a0a0f 0%, #0d0d14 100%);
   overflow: hidden;
 
@@ -25,9 +25,9 @@
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #ff5a32;
-    background: rgba(255, 90, 50, 0.1);
-    border: 1px solid rgba(255, 90, 50, 0.25);
+    color: #C8424C;
+    background: rgba(200, 66, 76, 0.1);
+    border: 1px solid rgba(200, 66, 76, 0.25);
     border-radius: 20px;
     padding: 0.3rem 0.9rem;
     margin-bottom: 1.5rem;
@@ -52,7 +52,7 @@
 
   &__tagline {
     font-size: 1.15rem;
-    color: #ff5a32;
+    color: #C8424C;
     font-weight: 600;
     margin-bottom: 1rem;
   }
@@ -89,7 +89,7 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,90,50,0.1);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(200, 66, 76, 0.1);
     font-family: 'Courier New', monospace;
   }
 }
@@ -161,11 +161,11 @@
     .screen__col--gap { color: rgba(255,255,255,0.4); font-size: 0.75rem; text-align: right; }
 
     &--leader {
-      background: rgba(255, 90, 50, 0.1);
-      border: 1px solid rgba(255, 90, 50, 0.2);
-      .screen__col--pos { color: #ff5a32; }
+      background: rgba(200, 66, 76, 0.1);
+      border: 1px solid rgba(200, 66, 76, 0.2);
+      .screen__col--pos { color: #C8424C; }
       .screen__col--name { color: #ffffff; font-weight: 700; }
-      .screen__col--time { color: #ff5a32; font-weight: 700; }
+      .screen__col--time { color: #C8424C; font-weight: 700; }
     }
   }
 
@@ -217,7 +217,7 @@
   transition: border-color 0.2s, transform 0.2s;
 
   &:hover {
-    border-color: rgba(255, 90, 50, 0.3);
+    border-color: rgba(200, 66, 76, 0.3);
     transform: translateY(-2px);
   }
 
@@ -264,8 +264,8 @@
   cursor: default;
 
   &:hover {
-    border-color: rgba(255,90,50,0.4);
-    background: rgba(255,90,50,0.06);
+    border-color: rgba(200, 66, 76, 0.4);
+    background: rgba(200, 66, 76, 0.06);
   }
 
   &__icon { font-size: 1.1rem; }
@@ -293,7 +293,7 @@
     font-size: 0.8rem;
     color: rgba(255,255,255,0.5);
 
-    svg { color: #ff5a32; flex-shrink: 0; }
+    svg { color: #C8424C; flex-shrink: 0; }
   }
 }
 
@@ -320,8 +320,8 @@
   transition: border-color 0.2s;
 
   &--available {
-    border-color: rgba(255,90,50,0.2);
-    background: rgba(255,90,50,0.04);
+    border-color: rgba(200, 66, 76, 0.2);
+    background: rgba(200, 66, 76, 0.04);
   }
 
   &--soon {

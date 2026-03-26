@@ -7,9 +7,9 @@ $bg-dark: #0A0E1A;
 $bg-dark-2: #0D1220;
 $bg-light: #F8FAFC;
 $bg-light-2: #F1F5F9;
-$orange: #FF6B00;
-$orange-dim: rgba(255, 107, 0, 0.12);
-$orange-border: rgba(255, 107, 0, 0.3);
+$orange: #C8424C;
+$orange-dim: rgba(200, 66, 76, 0.12);
+$orange-border: rgba(200, 66, 76, 0.3);
 $purple: #6B21A8;
 $text-white: #FFFFFF;
 $text-muted: #94A3B8;
@@ -88,7 +88,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   &:hover {
     background: lighten($orange, 6%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(255, 107, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(200, 66, 76, 0.3);
   }
 
   &--compact {
@@ -190,7 +190,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     &--orange {
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(255, 107, 0, 0.2) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(200, 66, 76, 0.2) 0%, transparent 70%);
       top: -200px;
       right: -100px;
     }
@@ -262,7 +262,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.04),
     0 24px 80px rgba(0, 0, 0, 0.5),
-    0 0 60px rgba(255, 107, 0, 0.06);
+    0 0 60px rgba(200, 66, 76, 0.06);
 
   &__bar {
     display: flex;
@@ -380,7 +380,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     }
 
     &--live {
-      background: rgba(255, 107, 0, 0.06);
+      background: rgba(200, 66, 76, 0.06);
       border-left: 2px solid $orange;
       padding-left: 10px;
 
@@ -633,7 +633,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     }
 
     &--gold {
-      background: rgba(255, 107, 0, 0.04);
+      background: rgba(200, 66, 76, 0.04);
 
       .screen__td--pos { color: $orange; font-weight: 700; }
       .screen__td--fin { color: $orange; }
@@ -700,7 +700,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
 
     &--otk {
       color: $orange;
-      background: rgba(255, 107, 0, 0.12);
+      background: rgba(200, 66, 76, 0.12);
       animation: pulse-status 1.5s ease-in-out infinite;
     }
   }
@@ -953,7 +953,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 107, 0, 0.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(200, 66, 76, 0.06) 0%, transparent 70%);
     pointer-events: none;
   }
 
