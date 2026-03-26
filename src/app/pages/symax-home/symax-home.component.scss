@@ -1,8 +1,8 @@
-// ═══════════════════════════════════════════════════════════════════
-// Symax Homepage — Premium Redesign
-// ═══════════════════════════════════════════════════════════════════
+// -
+// Symax Homepage - Premium Redesign
+// -
 
-// ─── Design Tokens ──────────────────────────────────────────────
+// - Design Tokens -
 $bg-dark: #0A0E1A;
 $bg-dark-2: #0D1220;
 $bg-light: #F8FAFC;
@@ -19,12 +19,12 @@ $border-light: rgba(0, 0, 0, 0.08);
 $font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
 
-// ─── Mixins ─────────────────────────────────────────────────────
+// - Mixins -
 @mixin section-padding {
   padding: clamp(80px, 10vw, 140px) 0;
 }
 
-// ─── Shared ─────────────────────────────────────────────────────
+// - Shared -
 .symax-home {
   font-family: $font-sans;
   color: $text-white;
@@ -68,7 +68,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   max-width: 540px;
 }
 
-// ─── Buttons ────────────────────────────────────────────────────
+// - Buttons -
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -149,11 +149,11 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   }
 }
 
-// ─── Scroll animation base ──────────────────────────────────────
+// - Scroll animation base -
 
-// ═══════════════════════════════════════════════════════════════════
-// SECTION 1 — HERO
-// ═══════════════════════════════════════════════════════════════════
+// -
+// SECTION 1 - HERO
+// -
 .hero {
   position: relative;
   min-height: 100vh;
@@ -253,7 +253,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   100% { transform: translate(30px, -20px) scale(1.05); }
 }
 
-// ── Terminal ────────────────────────────────────────────────────
+// - Terminal -
 .terminal {
   background: #0C1021;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -405,9 +405,9 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   50% { opacity: 0.3; }
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// SECTION 2 — TRUST BAR
-// ═══════════════════════════════════════════════════════════════════
+// -
+// SECTION 2 - TRUST BAR
+// -
 .trust {
   background: $bg-light;
   padding: 56px 0;
@@ -460,9 +460,9 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   }
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// SECTION 3 — PHOENIX SHOWCASE
-// ═══════════════════════════════════════════════════════════════════
+// -
+// SECTION 3 - PHOENIX SHOWCASE
+// -
 .showcase {
   @include section-padding;
   background: $bg-dark;
@@ -507,7 +507,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   white-space: nowrap;
 }
 
-// ── Product Screen Mockup ────────────────────────────────────────
+// - Product Screen Mockup -
 .screen {
   background: #080C18;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -711,9 +711,9 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   50% { opacity: 0.5; }
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// SECTION 4 — SOCIAL PROOF
-// ═══════════════════════════════════════════════════════════════════
+// -
+// SECTION 4 - SOCIAL PROOF
+// -
 .proof {
   @include section-padding;
   background: $bg-light;
@@ -796,9 +796,9 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   }
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// SECTION 5 — RACEHUB
-// ═══════════════════════════════════════════════════════════════════
+// -
+// SECTION 5 - RACEHUB
+// -
 .racehub {
   @include section-padding;
   background: $bg-dark-2;
@@ -857,9 +857,9 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   }
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// SECTION 6 — AGENTIC CREW
-// ═══════════════════════════════════════════════════════════════════
+// -
+// SECTION 6 - AGENTIC CREW
+// -
 .agentic {
   position: relative;
   padding: clamp(80px, 10vw, 120px) 0;
@@ -940,9 +940,9 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   }
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// SECTION 7 — FINAL CTA
-// ═══════════════════════════════════════════════════════════════════
+// -
+// SECTION 7 - FINAL CTA
+// -
 .final-cta {
   @include section-padding;
   background: $bg-dark;
@@ -988,13 +988,13 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   }
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// -
 // SCROLL ANIMATIONS (apply to fade-in class from global)
-// ═══════════════════════════════════════════════════════════════════
+// -
 
-// ═══════════════════════════════════════════════════════════════════
-// RESPONSIVE — Mobile Polish
-// ═══════════════════════════════════════════════════════════════════
+// -
+// RESPONSIVE - Mobile Polish
+// -
 @media (max-width: 480px) {
   .hero {
     padding: 100px 0 60px;
