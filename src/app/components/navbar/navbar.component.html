@@ -1,16 +1,68 @@
 <nav class="navbar" [class.scrolled]="scrolled()" [class.mobile-open]="mobileOpen()">
   <div class="navbar__inner container">
-    <a class="navbar__logo" (click)="scrollTo('hero')">
+
+    <!-- Logo -->
+    <a class="navbar__logo" routerLink="/">
       <img src="assets/images/SYMAX_white.png" alt="Symax Software Solutions" height="36">
     </a>
 
+    <!-- Desktop links -->
     <div class="navbar__links">
-      @for (link of content.nav.links; track link.anchor) {
-        <button class="navbar__link" (click)="scrollTo(link.anchor)">{{ link.label }}</button>
-      }
-      <button class="btn btn--primary btn--sm" (click)="scrollTo('contact')">Get in Touch</button>
+
+      <!-- Solutions dropdown -->
+      <div class="navbar__dropdown-wrap">
+        <button
+          class="navbar__link navbar__link--dropdown"
+          [class.active]="solutionsOpen()"
+          (click)="toggleSolutions($event)"
+        >
+          Solutions
+          <svg class="navbar__chevron" [class.open]="solutionsOpen()" width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="navbar__dropdown" [class.open]="solutionsOpen()">
+          <!-- Racing -->
+          <div class="navbar__dropdown-section-label">Racing & Events</div>
+          <a class="navbar__dropdown-item" routerLink="/phoenix" (click)="solutionsOpen.set(false)">
+            <div class="navbar__dropdown-icon">⚡</div>
+            <div>
+              <div class="navbar__dropdown-name">Phoenix Timing</div>
+              <div class="navbar__dropdown-desc">Cloud timing & scoring platform</div>
+            </div>
+          </a>
+          <a class="navbar__dropdown-item" routerLink="/racing" (click)="solutionsOpen.set(false)">
+            <div class="navbar__dropdown-icon">🏁</div>
+            <div>
+              <div class="navbar__dropdown-name">RaceHub</div>
+              <div class="navbar__dropdown-desc">Event registration platform</div>
+            </div>
+          </a>
+
+          <div class="navbar__dropdown-divider"></div>
+
+          <!-- AI -->
+          <div class="navbar__dropdown-section-label">AI & Software</div>
+          <a class="navbar__dropdown-item navbar__dropdown-item--soon" href="#agentic-crew" (click)="solutionsOpen.set(false)">
+            <div class="navbar__dropdown-icon">🤖</div>
+            <div>
+              <div class="navbar__dropdown-name">
+                Agentic Crew
+                <span class="navbar__dropdown-badge">Coming Soon</span>
+              </div>
+              <div class="navbar__dropdown-desc">AI agent observability dashboard</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <a class="navbar__link" routerLink="/racing">Racing</a>
+      <a class="navbar__link" href="/#contact" (click)="scrollToContact()">Contact</a>
+      <button class="btn btn--primary btn--sm" (click)="scrollToContact()">Get in Touch</button>
     </div>
 
+    <!-- Hamburger -->
     <button class="navbar__hamburger" (click)="toggleMobile()" [attr.aria-expanded]="mobileOpen()">
       <span></span>
       <span></span>
@@ -20,10 +72,20 @@
 
   <!-- Mobile menu -->
   <div class="navbar__mobile" [class.open]="mobileOpen()">
-    @for (link of content.nav.links; track link.anchor) {
-      <button class="navbar__mobile-link" (click)="scrollTo(link.anchor)">{{ link.label }}</button>
-    }
-    <button class="btn btn--primary" (click)="scrollTo('contact')">Get in Touch</button>
+    <div class="navbar__mobile-section-label">Solutions</div>
+    <a class="navbar__mobile-link" routerLink="/phoenix" (click)="closeMobile()">
+      ⚡ Phoenix Timing
+    </a>
+    <a class="navbar__mobile-link" routerLink="/racing" (click)="closeMobile()">
+      🏁 RaceHub
+    </a>
+    <a class="navbar__mobile-link navbar__mobile-link--soon" href="#agentic-crew" (click)="closeMobile()">
+      🤖 Agentic Crew <span class="navbar__dropdown-badge">Coming Soon</span>
+    </a>
+    <div class="navbar__mobile-divider"></div>
+    <a class="navbar__mobile-link" routerLink="/racing" (click)="closeMobile()">Racing</a>
+    <a class="navbar__mobile-link" href="#contact" (click)="closeMobile()">Contact</a>
+    <button class="btn btn--primary" (click)="scrollToContact()">Get in Touch</button>
   </div>
 </nav>
 
