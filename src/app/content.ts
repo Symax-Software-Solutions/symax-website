@@ -44,7 +44,7 @@ export const SITE_CONTENT = {
         'Multi-tenant architecture',
         'Broadcast-ready graphics output',
       ],
-      link: '#contact',
+      link: '/phoenix',
     },
     {
       id: 'racehub',
@@ -164,5 +164,92 @@ export const SITE_CONTENT = {
     headline: 'Ready to Elevate Your Events?',
     subtext: 'Whether you\'re timing a local race or the world championships — let\'s talk about what Phoenix can do for you.',
     email: 'michael.voss@symaxsoftware.com',
+  },
+
+  phoenix: {
+    hero: {
+      headline: 'Phoenix Timing & Scoring',
+      tagline: 'The cloud timing platform built for serious events.',
+      description: 'Hardware-agnostic, cloud-native, broadcast-ready. Phoenix powers UCI World Championships and local club races with equal precision.',
+      badge: 'Trusted by Swisstiming · UCI World Championships',
+    },
+    features: [
+      {
+        icon: '☁️',
+        title: 'Cloud-Native',
+        description: 'No local servers. No USB keys. Access your event from anywhere — timing desk, finish line, or home office.',
+      },
+      {
+        icon: '🔌',
+        title: 'Hardware-Agnostic',
+        description: 'Works with MYLAPS, Race Result, and other RFID timing systems. Bring your existing hardware — Phoenix handles the rest.',
+      },
+      {
+        icon: '📊',
+        title: 'Broadcast Graphics',
+        description: 'WorldTour-quality lower-thirds and live leaderboards. Output directly to broadcast feeds, screens, or streaming.',
+      },
+      {
+        icon: '🏢',
+        title: 'Multi-Tenant',
+        description: 'One platform, multiple organizations. Complete data isolation per crew — perfect for timing service providers.',
+      },
+      {
+        icon: '⚡',
+        title: 'Real-Time Results',
+        description: 'Zero-delay results the moment a rider crosses the line. Live leaderboards update instantly for athletes and spectators.',
+      },
+      {
+        icon: '🔗',
+        title: 'RaceHub Integration',
+        description: 'Seamless connection with RaceHub registration. Start lists flow straight in — no manual imports, no CSV headaches.',
+      },
+    ],
+    useCases: [
+      { label: 'Pumptrack Racing', icon: '🚵' },
+      { label: 'Road Cycling', icon: '🚴' },
+      { label: 'Cyclocross', icon: '🌲' },
+      { label: 'Criterium', icon: '🏙️' },
+      { label: 'BMX Racing', icon: '🏁' },
+      { label: 'MTB', icon: '⛰️' },
+    ],
+    download: {
+      headline: 'Download Phoenix',
+      description: 'Get the latest version of Phoenix Timing & Scoring. Available for Windows. macOS and Linux coming soon.',
+      version: 'v2.0',
+      releaseDate: 'March 2026',
+      releaseNotes: 'First cloud release. Multi-tenant architecture, RaceHub integration, real-time SSE event stream.',
+      platforms: [
+        {
+          os: 'Windows',
+          icon: '🪟',
+          available: true,
+          filename: 'Phoenix-Setup-2.0.0.exe',
+          url: '#download-windows',
+          size: '~85 MB',
+        },
+        {
+          os: 'macOS',
+          icon: '🍎',
+          available: false,
+          filename: null,
+          url: null,
+          size: null,
+        },
+        {
+          os: 'Linux',
+          icon: '🐧',
+          available: false,
+          filename: null,
+          url: null,
+          size: null,
+        },
+      ],
+    },
+    cta: {
+      headline: 'Ready to run your first event?',
+      subtext: 'Get in touch and we\'ll have you set up before race day.',
+      email: 'michael.voss@symaxsoftware.com',
+    },
   },
 };

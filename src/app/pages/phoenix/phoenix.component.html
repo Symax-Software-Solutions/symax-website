@@ -1,0 +1,178 @@
+<app-navbar></app-navbar>
+
+<main class="phoenix-page">
+
+  <!-- ─── Hero ─────────────────────────────────────────────────────────────── -->
+  <section class="phoenix-hero">
+    <div class="container">
+      <div class="phoenix-hero__inner">
+        <div class="phoenix-hero__content">
+          <span class="phoenix-hero__badge">{{ content.hero.badge }}</span>
+          <img src="assets/images/phoenix_timing_scoring_logo.png" alt="Phoenix Timing & Scoring" class="phoenix-hero__logo">
+          <h1 class="phoenix-hero__headline">{{ content.hero.headline }}</h1>
+          <p class="phoenix-hero__tagline">{{ content.hero.tagline }}</p>
+          <p class="phoenix-hero__description">{{ content.hero.description }}</p>
+          <div class="phoenix-hero__actions">
+            <a href="#download" class="btn btn--primary btn--lg">
+              Download Phoenix
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#contact-phoenix" class="btn btn--ghost btn--lg">Talk to Us</a>
+          </div>
+        </div>
+        <div class="phoenix-hero__graphic">
+          <div class="phoenix-hero__screen">
+            <div class="screen__topbar">
+              <span class="screen__dot screen__dot--red"></span>
+              <span class="screen__dot screen__dot--yellow"></span>
+              <span class="screen__dot screen__dot--green"></span>
+              <span class="screen__title">Phoenix · Live Results</span>
+            </div>
+            <div class="screen__content">
+              <div class="screen__header-row">
+                <span class="screen__col screen__col--pos">POS</span>
+                <span class="screen__col screen__col--name">RIDER</span>
+                <span class="screen__col screen__col--time">TIME</span>
+                <span class="screen__col screen__col--gap">GAP</span>
+              </div>
+              @for (row of leaderboard; track row.pos) {
+                <div class="screen__row" [class.screen__row--leader]="row.pos === 1">
+                  <span class="screen__col screen__col--pos">{{ row.pos }}</span>
+                  <span class="screen__col screen__col--name">{{ row.name }}</span>
+                  <span class="screen__col screen__col--time">{{ row.time }}</span>
+                  <span class="screen__col screen__col--gap">{{ row.gap }}</span>
+                </div>
+              }
+              <div class="screen__live-indicator">
+                <span class="screen__live-dot"></span>
+                LIVE
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Features ─────────────────────────────────────────────────────────── -->
+  <section class="phoenix-features section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Capabilities</span>
+        <h2>Everything an Event Needs</h2>
+        <p>From the start gun to the podium — Phoenix handles every moment.</p>
+      </div>
+      <div class="phoenix-features__grid">
+        @for (feature of content.features; track feature.title) {
+          <div class="feature-card">
+            <div class="feature-card__icon">{{ feature.icon }}</div>
+            <h3 class="feature-card__title">{{ feature.title }}</h3>
+            <p class="feature-card__description">{{ feature.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Use Cases ─────────────────────────────────────────────────────────── -->
+  <section class="phoenix-usecases section section--dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Disciplines</span>
+        <h2>Built for Every Format</h2>
+        <p>Whether it's a world championship or a weekend club race — Phoenix scales to fit.</p>
+      </div>
+      <div class="phoenix-usecases__grid">
+        @for (use of content.useCases; track use.label) {
+          <div class="usecase-chip">
+            <span class="usecase-chip__icon">{{ use.icon }}</span>
+            <span class="usecase-chip__label">{{ use.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Download ─────────────────────────────────────────────────────────── -->
+  <section id="download" class="phoenix-download section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Download</span>
+        <h2>{{ content.download.headline }}</h2>
+        <p>{{ content.download.description }}</p>
+      </div>
+
+      <div class="download-meta">
+        <span class="download-meta__item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7l3.5 3.5L12 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Latest: {{ content.download.version }}
+        </span>
+        <span class="download-meta__item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 4.5V7l1.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          {{ content.download.releaseDate }}
+        </span>
+      </div>
+
+      <div class="download-cards">
+        @for (platform of content.download.platforms; track platform.os) {
+          <div class="download-card" [class.download-card--available]="platform.available" [class.download-card--soon]="!platform.available">
+            <div class="download-card__icon">{{ platform.icon }}</div>
+            <div class="download-card__info">
+              <h3 class="download-card__os">{{ platform.os }}</h3>
+              @if (platform.available) {
+                <p class="download-card__filename">{{ platform.filename }}</p>
+                <p class="download-card__size">{{ platform.size }}</p>
+              } @else {
+                <p class="download-card__soon-text">Coming soon</p>
+              }
+            </div>
+            @if (platform.available) {
+              <a [href]="platform.url" class="btn btn--primary download-card__btn">
+                Download
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            } @else {
+              <span class="download-card__badge-soon">Soon</span>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="release-notes">
+        <h4 class="release-notes__title">{{ content.download.version }} Release Notes</h4>
+        <p class="release-notes__text">{{ content.download.releaseNotes }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ──────────────────────────────────────────────────────────────── -->
+  <section id="contact-phoenix" class="phoenix-cta section section--dark">
+    <div class="container">
+      <div class="phoenix-cta__inner">
+        <h2 class="phoenix-cta__headline">{{ content.cta.headline }}</h2>
+        <p class="phoenix-cta__subtext">{{ content.cta.subtext }}</p>
+        <a [href]="'mailto:' + content.cta.email" class="btn btn--primary btn--lg">
+          Get in Touch
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <p class="phoenix-cta__back">
+          <a routerLink="/">← Back to Symax</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<app-footer></app-footer>
