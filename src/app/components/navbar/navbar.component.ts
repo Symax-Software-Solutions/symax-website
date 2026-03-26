@@ -10,7 +10,7 @@ import { RouterModule, RouterLink, Router } from '@angular/router';
   standalone: true,
   imports: [RouterModule, RouterLink],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  styleUrls: ['./navbar.component.less'],
 })
 export class NavbarComponent {
   scrolled = signal(false);

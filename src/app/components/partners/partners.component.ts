@@ -8,7 +8,7 @@ import { ScrollAnimationService } from '../../services/scroll-animation.service'
   standalone: true,
   imports: [CommonModule],
   templateUrl: './partners.component.html',
-  styleUrls: ['./partners.component.scss'],
+  styleUrls: ['./partners.component.less'],
 })
 export class PartnersComponent {
   content = SITE_CONTENT.partners;

@@ -9,7 +9,7 @@ import { ScrollAnimationService } from '../../services/scroll-animation.service'
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss'],
+  styleUrls: ['./contact.component.less'],
 })
 export class ContactComponent {
   content = SITE_CONTENT.contact;

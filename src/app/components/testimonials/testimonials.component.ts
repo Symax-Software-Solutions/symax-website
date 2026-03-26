@@ -6,7 +6,7 @@ import { ScrollAnimationService } from '../../services/scroll-animation.service'
   selector: 'app-testimonials',
   standalone: true,
   templateUrl: './testimonials.component.html',
-  styleUrls: ['./testimonials.component.scss'],
+  styleUrls: ['./testimonials.component.less'],
 })
 export class TestimonialsComponent {
   content = SITE_CONTENT.testimonials;

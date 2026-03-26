@@ -5,7 +5,7 @@ import { SITE_CONTENT } from '../../content';
   selector: 'app-hero',
   standalone: true,
   templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.scss'],
+  styleUrls: ['./hero.component.less'],
 })
 export class HeroComponent {
   content = SITE_CONTENT.hero;

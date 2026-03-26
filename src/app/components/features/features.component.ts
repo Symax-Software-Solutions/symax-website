@@ -6,7 +6,7 @@ import { ScrollAnimationService } from '../../services/scroll-animation.service'
   selector: 'app-features',
   standalone: true,
   templateUrl: './features.component.html',
-  styleUrls: ['./features.component.scss'],
+  styleUrls: ['./features.component.less'],
 })
 export class FeaturesComponent {
   content = SITE_CONTENT.features;

@@ -5,7 +5,7 @@ import { SITE_CONTENT } from '../../content';
   selector: 'app-footer',
   standalone: true,
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
+  styleUrls: ['./footer.component.less'],
 })
 export class FooterComponent {
   content = SITE_CONTENT.company;

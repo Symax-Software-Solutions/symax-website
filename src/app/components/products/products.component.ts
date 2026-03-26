@@ -9,7 +9,7 @@ import { ScrollAnimationService } from '../../services/scroll-animation.service'
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
+  styleUrls: ['./products.component.less'],
 })
 export class ProductsComponent implements OnInit {
   content = SITE_CONTENT.products;
