@@ -2,73 +2,92 @@
 
 <main class="symax-home">
 
-  <!-- ─── Hero ─────────────────────────────────────────────────────────────── -->
-  <section class="sh-hero">
-    <div class="sh-hero__bg">
-      <div class="sh-hero__orb sh-hero__orb--1"></div>
-      <div class="sh-hero__orb sh-hero__orb--2"></div>
-      <div class="sh-hero__grid"></div>
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- HERO                                                                    -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__grid"></div>
+      <div class="hero__orb hero__orb--orange"></div>
+      <div class="hero__orb hero__orb--purple"></div>
     </div>
-    <div class="container">
-      <div class="sh-hero__inner">
-        <div class="sh-hero__eyebrow" #animEl>
-          <span class="sh-hero__badge">
-            <span class="sh-hero__badge-dot"></span>
-            {{ content.hero.badge }}
-          </span>
-        </div>
-        <h1 class="sh-hero__headline" #animEl>
-          @for (line of content.hero.headlineLines; track line) {
-            <span class="sh-hero__headline-line">{{ line }}</span>
-          }
+
+    <div class="container hero__content">
+      <div class="hero__text" #animEl>
+        <h1 class="hero__headline">
+          Timing infrastructure<br>for world-class racing.
         </h1>
-        <p class="sh-hero__sub" #animEl>{{ content.hero.subtitle }}</p>
-        <div class="sh-hero__actions" #animEl>
-          <a href="#products" class="btn-sh btn-sh--primary">
-            {{ content.hero.cta1 }}
+        <p class="hero__sub">
+          {{ content.hero.subtitle }}
+        </p>
+        <div class="hero__actions">
+          <a routerLink="/phoenix" class="btn-primary">
+            See Phoenix
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a [href]="'mailto:' + content.hero.email" class="btn-sh btn-sh--ghost">{{ content.hero.cta2 }}</a>
+          <a [href]="'mailto:' + email" class="btn-ghost">Get in Touch</a>
         </div>
-        <div class="sh-hero__clients" #animEl>
-          <span class="sh-hero__clients-label">Trusted by</span>
-          @for (client of content.hero.clients; track client) {
-            <span class="sh-hero__client">{{ client }}</span>
-          }
+      </div>
+
+      <!-- Terminal/Timing Screen -->
+      <div class="hero__terminal" #animEl>
+        <div class="terminal">
+          <div class="terminal__bar">
+            <div class="terminal__dots">
+              <span class="terminal__dot terminal__dot--red"></span>
+              <span class="terminal__dot terminal__dot--yellow"></span>
+              <span class="terminal__dot terminal__dot--green"></span>
+            </div>
+            <span class="terminal__title">Phoenix — Live Results</span>
+            <span class="terminal__live-badge">
+              <span class="terminal__live-dot"></span>
+              LIVE
+            </span>
+          </div>
+          <div class="terminal__header-row">
+            <span class="terminal__event-name">Pumptrack World Championships 2025 — Men Elite Final</span>
+          </div>
+          <div class="terminal__content">
+            <div class="terminal__table-header">
+              <span class="terminal__col terminal__col--rank">#</span>
+              <span class="terminal__col terminal__col--bib">BIB</span>
+              <span class="terminal__col terminal__col--name">RIDER</span>
+              <span class="terminal__col terminal__col--nation">NAT</span>
+              <span class="terminal__col terminal__col--time">TIME</span>
+              <span class="terminal__col terminal__col--gap">GAP</span>
+            </div>
+            @for (line of terminalLines; track line.bib + line.status) {
+              <div class="terminal__row" [class.terminal__row--live]="line.status === 'live'" [class.terminal__row--first]="line.rank === '1'">
+                <span class="terminal__col terminal__col--rank">{{ line.rank }}</span>
+                <span class="terminal__col terminal__col--bib">{{ line.bib }}</span>
+                <span class="terminal__col terminal__col--name">{{ line.name }}</span>
+                <span class="terminal__col terminal__col--nation">{{ line.nation }}</span>
+                <span class="terminal__col terminal__col--time">{{ line.time }}</span>
+                <span class="terminal__col terminal__col--gap">{{ line.gap }}</span>
+              </div>
+            }
+          </div>
+          <div class="terminal__footer">
+            <span>phoenix v2.0</span>
+            <span>{{ content.hero.terminalFooter }}</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── Products ─────────────────────────────────────────────────────────── -->
-  <section id="products" class="sh-section">
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- TRUST BAR                                                                -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="trust" #animEl>
     <div class="container">
-      <div class="sh-section-header" #animEl>
-        <span class="sh-label">{{ content.products.label }}</span>
-        <h2 class="sh-heading">{{ content.products.heading }}</h2>
-        <p class="sh-sub">{{ content.products.subheading }}</p>
-      </div>
-      <div class="sh-products-grid">
-        @for (product of content.products.items; track product.id; let i = $index) {
-          <div class="sh-product-card" [class.sh-product-card--featured]="product.featured" #animEl [style.transition-delay]="i * 100 + 'ms'">
-            <div class="sh-product-card__header">
-              <div class="sh-product-card__icon">{{ product.icon }}</div>
-              @if (product.badge) {
-                <span class="sh-product-card__badge">{{ product.badge }}</span>
-              }
-            </div>
-            <h3 class="sh-product-card__name">{{ product.name }}</h3>
-            <p class="sh-product-card__desc">{{ product.description }}</p>
-            @if (product.link.startsWith('http')) {
-              <a [href]="product.link" target="_blank" rel="noopener" class="sh-product-card__link">
-                {{ product.cta }}
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            } @else {
-              <a [routerLink]="product.link" class="sh-product-card__link">
-                {{ product.cta }}
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
+      <p class="trust__label">Trusted by the best in cycling</p>
+      <div class="trust__logos">
+        @for (partner of content.trustBar; track partner.name) {
+          <div class="trust__logo">
+            <span class="trust__logo-text" [class.trust__logo-text--compat]="partner.compat">{{ partner.name }}</span>
+            @if (partner.compat) {
+              <span class="trust__compat-label">compatible</span>
             }
           </div>
         }
@@ -76,49 +95,188 @@
     </div>
   </section>
 
-  <!-- ─── Why Symax ─────────────────────────────────────────────────────────── -->
-  <section class="sh-section sh-section--muted">
-    <div class="container">
-      <div class="sh-section-header" #animEl>
-        <span class="sh-label">{{ content.why.label }}</span>
-        <h2 class="sh-heading">{{ content.why.heading }}</h2>
-      </div>
-      <div class="sh-pillars">
-        @for (pillar of content.why.pillars; track pillar.title; let i = $index) {
-          <div class="sh-pillar" #animEl [style.transition-delay]="i * 80 + 'ms'">
-            <div class="sh-pillar__icon">{{ pillar.icon }}</div>
-            <h3 class="sh-pillar__title">{{ pillar.title }}</h3>
-            <p class="sh-pillar__text">{{ pillar.text }}</p>
-          </div>
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Stats ─────────────────────────────────────────────────────────────── -->
-  <section class="sh-stats" #animEl>
-    <div class="container">
-      <div class="sh-stats__grid">
-        @for (stat of content.stats; track stat.value) {
-          <div class="sh-stat">
-            <span class="sh-stat__value">{{ stat.value }}</span>
-            <span class="sh-stat__label">{{ stat.label }}</span>
-          </div>
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── CTA ──────────────────────────────────────────────────────────────── -->
-  <section id="contact" class="sh-cta">
-    <div class="container">
-      <div class="sh-cta__inner" #animEl>
-        <h2 class="sh-cta__heading">{{ content.cta.heading }}</h2>
-        <p class="sh-cta__sub">{{ content.cta.subtext }}</p>
-        <a [href]="'mailto:' + content.cta.email" class="btn-sh btn-sh--primary btn-sh--lg">
-          {{ content.cta.button }}
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- PHOENIX SHOWCASE                                                         -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="showcase">
+    <div class="container showcase__inner">
+      <div class="showcase__copy" #animEl>
+        <span class="section-label">{{ content.showcase.label }}</span>
+        <h2 class="section-heading">{{ content.showcase.heading }}</h2>
+        <p class="section-sub">{{ content.showcase.description }}</p>
+        <div class="showcase__pills">
+          @for (pill of content.showcase.pills; track pill) {
+            <span class="pill">{{ pill }}</span>
+          }
+        </div>
+        <a routerLink="/phoenix" class="btn-primary btn-primary--compact">
+          Explore Phoenix
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+      </div>
+
+      <div class="showcase__screen" #animEl>
+        <div class="screen">
+          <div class="screen__bar">
+            <div class="screen__dots">
+              <span class="screen__dot"></span>
+              <span class="screen__dot"></span>
+              <span class="screen__dot"></span>
+            </div>
+            <span class="screen__url">app.phoenix-timing.com</span>
+            <span class="screen__live">
+              <span class="screen__live-dot"></span>
+              LIVE
+            </span>
+          </div>
+          <div class="screen__body">
+            <div class="screen__top-bar">
+              <span class="screen__event">UCI MTB World Championships 2024</span>
+              <span class="screen__category">Men Elite — Pumptrack</span>
+            </div>
+            <div class="screen__table">
+              <div class="screen__thead">
+                <span class="screen__th screen__th--pos">POS</span>
+                <span class="screen__th screen__th--rider">RIDER</span>
+                <span class="screen__th screen__th--s1">SPLIT 1</span>
+                <span class="screen__th screen__th--s2">SPLIT 2</span>
+                <span class="screen__th screen__th--fin">FINISH</span>
+                <span class="screen__th screen__th--status">STATUS</span>
+              </div>
+              <div class="screen__tr screen__tr--gold">
+                <span class="screen__td screen__td--pos">1</span>
+                <span class="screen__td screen__td--rider"><span class="screen__flag">🇩🇪</span> T. Müller</span>
+                <span class="screen__td screen__td--s1">10.432</span>
+                <span class="screen__td screen__td--s2">16.891</span>
+                <span class="screen__td screen__td--fin screen__td--best">22.847</span>
+                <span class="screen__td screen__td--status"><span class="screen__status screen__status--fin">FIN</span></span>
+              </div>
+              <div class="screen__tr">
+                <span class="screen__td screen__td--pos">2</span>
+                <span class="screen__td screen__td--rider"><span class="screen__flag">🇫🇷</span> L. Dubois</span>
+                <span class="screen__td screen__td--s1">10.501</span>
+                <span class="screen__td screen__td--s2">17.044</span>
+                <span class="screen__td screen__td--fin">23.012</span>
+                <span class="screen__td screen__td--status"><span class="screen__status screen__status--fin">FIN</span></span>
+              </div>
+              <div class="screen__tr">
+                <span class="screen__td screen__td--pos">3</span>
+                <span class="screen__td screen__td--rider"><span class="screen__flag">🇳🇱</span> M. van Dijk</span>
+                <span class="screen__td screen__td--s1">10.611</span>
+                <span class="screen__td screen__td--s2">17.102</span>
+                <span class="screen__td screen__td--fin">23.198</span>
+                <span class="screen__td screen__td--status"><span class="screen__status screen__status--fin">FIN</span></span>
+              </div>
+              <div class="screen__tr">
+                <span class="screen__td screen__td--pos">4</span>
+                <span class="screen__td screen__td--rider"><span class="screen__flag">🇯🇵</span> S. Tanaka</span>
+                <span class="screen__td screen__td--s1">10.788</span>
+                <span class="screen__td screen__td--s2">17.301</span>
+                <span class="screen__td screen__td--fin">23.456</span>
+                <span class="screen__td screen__td--status"><span class="screen__status screen__status--fin">FIN</span></span>
+              </div>
+              <div class="screen__tr screen__tr--live">
+                <span class="screen__td screen__td--pos">—</span>
+                <span class="screen__td screen__td--rider"><span class="screen__flag">🇮🇹</span> A. Rossi</span>
+                <span class="screen__td screen__td--s1">10.523</span>
+                <span class="screen__td screen__td--s2">—</span>
+                <span class="screen__td screen__td--fin">—</span>
+                <span class="screen__td screen__td--status"><span class="screen__status screen__status--otk">OTK</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- SOCIAL PROOF                                                             -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="proof">
+    <div class="container">
+      <div class="proof__case" #animEl>
+        <span class="section-label">{{ content.proof.label }}</span>
+        <div class="proof__card">
+          <div class="proof__card-badge">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 1l2.245 4.55L17 6.41l-3.5 3.41.826 4.818L10 12.635 5.674 14.638 6.5 9.82 3 6.41l4.755-.86L10 1z" fill="#FF6B00"/></svg>
+            Case Study
+          </div>
+          <p class="proof__quote">{{ content.proof.caseStudy }}</p>
+          <span class="proof__source">— Swisstiming × Symax, UCI MTB World Championships 2024</span>
+        </div>
+      </div>
+
+      <div class="proof__stats" #animEl>
+        @for (stat of content.proof.stats; track stat.label) {
+          <div class="proof__stat">
+            <span class="proof__stat-value">{{ stat.value }}</span>
+            <span class="proof__stat-label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- RACEHUB                                                                  -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="racehub">
+    <div class="container racehub__inner" #animEl>
+      <div class="racehub__icon">🏁</div>
+      <div class="racehub__content">
+        <span class="section-label">{{ content.racehub.label }}</span>
+        <h2 class="section-heading section-heading--sm">{{ content.racehub.heading }}</h2>
+        <p class="section-sub">{{ content.racehub.description }}</p>
+        <ul class="racehub__bullets">
+          @for (bullet of content.racehub.bullets; track bullet) {
+            <li class="racehub__bullet">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12l-3.5-3.5" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {{ bullet }}
+            </li>
+          }
+        </ul>
+        <a routerLink="/racing" class="btn-primary btn-primary--compact">
+          Learn about RaceHub
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- AGENTIC CREW                                                             -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="agentic">
+    <div class="agentic__bg">
+      <div class="agentic__orb agentic__orb--1"></div>
+      <div class="agentic__orb agentic__orb--2"></div>
+      <div class="agentic__grid"></div>
+    </div>
+    <div class="container agentic__inner" #animEl>
+      <span class="agentic__eyebrow">Beyond Racing</span>
+      <h2 class="agentic__headline">Software that thinks.</h2>
+      <p class="agentic__sub">{{ content.agentic.description }}</p>
+      <a href="https://agenticcrew.io" target="_blank" rel="noopener" class="btn-agentic">
+        Explore Agentic Crew
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- FINAL CTA                                                                -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="final-cta">
+    <div class="container final-cta__inner" #animEl>
+      <h2 class="final-cta__headline">Ready to modernize your timing?</h2>
+      <p class="final-cta__sub">{{ content.finalCta.subtext }}</p>
+      <div class="final-cta__actions">
+        <a [href]="'mailto:' + email" class="btn-primary btn-primary--lg">
+          Book a Demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a routerLink="/phoenix" class="btn-ghost">See Phoenix</a>
       </div>
     </div>
   </section>
