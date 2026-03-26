@@ -1,0 +1,40 @@
+<section id="portfolio" class="section portfolio">
+  <div class="container">
+    <div class="section-header fade-in" #animEl>
+      <span class="section-label">Track Record</span>
+      <h2>Events We've Powered</h2>
+      <p>From regional qualifiers to UCI World Championships — Phoenix delivers at every level.</p>
+    </div>
+
+    <div class="portfolio__grid">
+      @for (item of content; track item.id; let i = $index) {
+        <div class="portfolio-card fade-in" #animEl [style.transition-delay]="i * 100 + 'ms'">
+          <div class="portfolio-card__image" [class.has-image]="!!item.image">
+            @if (item.image) {
+              <img [src]="item.image" [alt]="item.title" loading="lazy">
+            } @else {
+              <div class="portfolio-card__placeholder">
+                <span class="portfolio-card__flag">{{ item.flag }}</span>
+              </div>
+            }
+            <div class="portfolio-card__image-overlay"></div>
+          </div>
+
+          <div class="portfolio-card__body">
+            <div class="portfolio-card__tags">
+              @for (tag of item.tags; track tag) {
+                <span class="portfolio-card__tag">{{ tag }}</span>
+              }
+            </div>
+            <h3 class="portfolio-card__title">
+              <span class="portfolio-card__flag-inline">{{ item.flag }}</span>
+              {{ item.title }}
+            </h3>
+            <p class="portfolio-card__subtitle">{{ item.subtitle }}</p>
+            <p class="portfolio-card__description">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

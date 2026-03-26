@@ -1,0 +1,47 @@
+<section id="testimonials" class="section testimonials">
+  <div class="container">
+    <div class="section-header fade-in" #animEl>
+      <span class="section-label">What They Say</span>
+      <h2>From the Field</h2>
+      <p>Hear from the timing professionals and event organizers who rely on Phoenix.</p>
+    </div>
+
+    <div class="testimonials__carousel fade-in" #animEl (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+      <div class="testimonials__track">
+        @for (item of content; track item.author; let i = $index) {
+          <div class="testimonial-card" [class.active]="i === activeIndex()" [class.prev]="i === (activeIndex() - 1 + content.length) % content.length" [class.next]="i === (activeIndex() + 1) % content.length">
+            <div class="testimonial-card__quote-mark">"</div>
+            <blockquote class="testimonial-card__quote">{{ item.quote }}</blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar">{{ item.initials }}</div>
+              <div class="testimonial-card__info">
+                <span class="testimonial-card__name">{{ item.author }}</span>
+                <span class="testimonial-card__role">{{ item.role }}</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="testimonials__controls">
+        <button class="testimonials__arrow" (click)="prev()" aria-label="Previous">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="testimonials__dots">
+          @for (item of content; track item.author; let i = $index) {
+            <button class="testimonials__dot" [class.active]="i === activeIndex()" (click)="goTo(i)" [attr.aria-label]="'Testimonial ' + (i + 1)"></button>
+          }
+        </div>
+
+        <button class="testimonials__arrow" (click)="next()" aria-label="Next">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

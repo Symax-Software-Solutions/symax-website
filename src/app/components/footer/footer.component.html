@@ -1,0 +1,48 @@
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img src="assets/images/SYMAX_white.png" alt="Symax Software Solutions" height="32" class="footer__logo" (click)="scrollToTop()">
+      <p class="footer__tagline">Precision Timing. Live Graphics. One Platform.</p>
+    </div>
+
+    <div class="footer__links">
+      <div class="footer__link-group">
+        <span class="footer__group-title">Products</span>
+        <a href="#products">Phoenix Timing & Scoring</a>
+        <a href="#products">RaceHub</a>
+      </div>
+      <div class="footer__link-group">
+        <span class="footer__group-title">Company</span>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer__link-group">
+        <span class="footer__group-title">Legal</span>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+
+    <div class="footer__social">
+      <a [href]="content.instagram" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <span>© {{ content.year }} {{ content.name }}. All rights reserved.</span>
+      <button class="footer__back-top" (click)="scrollToTop()" aria-label="Back to top">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 12V4M4 8l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to top
+      </button>
+    </div>
+  </div>
+</footer>

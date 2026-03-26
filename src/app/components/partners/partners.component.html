@@ -1,0 +1,21 @@
+<section id="partners" class="section partners">
+  <div class="container">
+    <div class="section-header fade-in" #animEl>
+      <span class="section-label">Trusted By</span>
+      <h2>World-Class Partners</h2>
+      <p>Working alongside the sport's most respected organizations.</p>
+    </div>
+
+    <div class="partners__strip fade-in" #animEl>
+      @for (partner of content; track partner.name) {
+        <a [href]="partner.url" target="_blank" rel="noopener" class="partner-item" [attr.aria-label]="partner.name">
+          @if (partner.logo) {
+            <img [src]="partner.logo" [alt]="partner.name" loading="lazy">
+          } @else {
+            <span class="partner-item__text">{{ partner.text }}</span>
+          }
+        </a>
+      }
+    </div>
+  </div>
+</section>

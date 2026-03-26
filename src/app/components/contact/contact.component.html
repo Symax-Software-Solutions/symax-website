@@ -1,0 +1,69 @@
+<section id="contact" class="section contact">
+  <div class="contact__bg">
+    <img src="assets/images/pumptrack_banner.jpg" alt="" class="contact__bg-img" loading="lazy">
+    <div class="contact__overlay"></div>
+  </div>
+
+  <div class="container contact__inner">
+    <div class="contact__cta fade-in" #animEl>
+      <div class="accent-line"></div>
+      <h2 class="heading-lg">{{ content.headline }}</h2>
+      <p>{{ content.subtext }}</p>
+      <a [href]="'mailto:' + content.email" class="contact__email">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M2 4h16v12H2V4zm0 0l8 7 8-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {{ content.email }}
+      </a>
+    </div>
+
+    <div class="contact__form-wrap fade-in" #animEl style="transition-delay: 150ms">
+      <form class="contact__form" (ngSubmit)="submitForm()">
+        <h3 class="contact__form-title">Send a Message</h3>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            [(ngModel)]="form.name"
+            placeholder="Your name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            [(ngModel)]="form.email"
+            placeholder="your@email.com"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            [(ngModel)]="form.message"
+            rows="4"
+            placeholder="Tell us about your event..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary">
+          Send Message
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

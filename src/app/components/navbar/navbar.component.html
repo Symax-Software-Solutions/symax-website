@@ -1,0 +1,33 @@
+<nav class="navbar" [class.scrolled]="scrolled()" [class.mobile-open]="mobileOpen()">
+  <div class="navbar__inner container">
+    <a class="navbar__logo" (click)="scrollTo('hero')">
+      <img src="assets/images/SYMAX_white.png" alt="Symax Software Solutions" height="36">
+    </a>
+
+    <div class="navbar__links">
+      @for (link of content.nav.links; track link.anchor) {
+        <button class="navbar__link" (click)="scrollTo(link.anchor)">{{ link.label }}</button>
+      }
+      <button class="btn btn--primary btn--sm" (click)="scrollTo('contact')">Get in Touch</button>
+    </div>
+
+    <button class="navbar__hamburger" (click)="toggleMobile()" [attr.aria-expanded]="mobileOpen()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="navbar__mobile" [class.open]="mobileOpen()">
+    @for (link of content.nav.links; track link.anchor) {
+      <button class="navbar__mobile-link" (click)="scrollTo(link.anchor)">{{ link.label }}</button>
+    }
+    <button class="btn btn--primary" (click)="scrollTo('contact')">Get in Touch</button>
+  </div>
+</nav>
+
+<!-- Overlay for mobile -->
+@if (mobileOpen()) {
+  <div class="navbar__overlay" (click)="closeMobile()"></div>
+}

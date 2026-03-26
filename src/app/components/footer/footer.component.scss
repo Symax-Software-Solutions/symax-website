@@ -1,0 +1,126 @@
+.footer {
+  background: #050505;
+  border-top: 1px solid var(--color-border);
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 64px;
+    padding-bottom: 48px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 2fr 3fr 1fr;
+      align-items: start;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__logo {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity var(--transition-fast);
+    &:hover { opacity: 1; }
+  }
+
+  &__tagline {
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    line-height: 1.5;
+  }
+
+  &__links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  &__link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      transition: color var(--transition-fast);
+
+      &:hover { color: #fff; }
+    }
+  }
+
+  &__group-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    margin-bottom: 4px;
+  }
+
+  &__social {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+
+    @media (min-width: 768px) {
+      justify-content: flex-end;
+    }
+  }
+
+  &__social-link {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    transition: all var(--transition-base);
+
+    &:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: rgba(232, 57, 14, 0.08);
+    }
+  }
+
+  &__bottom {
+    border-top: 1px solid var(--color-border);
+    padding: 16px 0;
+  }
+
+  &__bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    span {
+      font-size: 0.8rem;
+      color: var(--color-text-dim);
+    }
+  }
+
+  &__back-top {
+    background: none;
+    color: var(--color-text-dim);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+}

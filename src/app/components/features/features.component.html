@@ -1,0 +1,19 @@
+<section id="features" class="section features">
+  <div class="container">
+    <div class="section-header fade-in" #animEl>
+      <span class="section-label">Platform Features</span>
+      <h2>Everything You Need</h2>
+      <p>Designed from the ground up for professional cycling events. No compromises.</p>
+    </div>
+
+    <div class="features__grid">
+      @for (feature of content; track feature.title; let i = $index) {
+        <div class="feature-card fade-in" #animEl [style.transition-delay]="i * 80 + 'ms'">
+          <div class="feature-card__icon">{{ feature.icon }}</div>
+          <h3 class="feature-card__title">{{ feature.title }}</h3>
+          <p class="feature-card__description">{{ feature.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

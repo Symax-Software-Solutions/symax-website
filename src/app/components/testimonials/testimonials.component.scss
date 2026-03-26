@@ -1,0 +1,145 @@
+.testimonials {
+  background: var(--color-bg-2);
+
+  &__carousel {
+    max-width: 720px;
+    margin: 0 auto;
+    touch-action: pan-y;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  &__track {
+    position: relative;
+    min-height: 280px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  &__arrow {
+    width: 44px;
+    height: 44px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    transition: all var(--transition-base);
+
+    &:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: rgba(232, 57, 14, 0.08);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+    transition: all var(--transition-base);
+
+    &.active {
+      background: var(--color-accent);
+      width: 24px;
+      border-radius: 4px;
+    }
+  }
+}
+
+.testimonial-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vw, 48px);
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+    position: relative;
+  }
+
+  &.prev {
+    transform: translateX(-40px);
+  }
+
+  &__quote-mark {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    line-height: 0.5;
+    color: var(--color-accent);
+    opacity: 0.4;
+    margin-bottom: 16px;
+  }
+
+  &__quote {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #fff;
+  }
+
+  &__role {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+}

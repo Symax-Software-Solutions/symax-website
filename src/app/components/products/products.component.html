@@ -1,0 +1,52 @@
+<section id="products" class="section products">
+  <div class="container">
+    <div class="section-header" #animEl>
+      <span class="section-label">Our Platforms</span>
+      <h2>Built for the Sport</h2>
+      <p>Two products. One ecosystem. Everything you need to run professional-grade cycling events.</p>
+    </div>
+
+    <div class="products__grid">
+      @for (product of content; track product.id; let i = $index) {
+        <div class="product-card fade-in" [style.transition-delay]="i * 150 + 'ms'" #animEl>
+          <div class="product-card__header">
+            @if (product.logo) {
+              <img [src]="product.logo" [alt]="product.name" class="product-card__logo">
+            }
+            @if (product.badge) {
+              <span class="product-card__badge">{{ product.badge }}</span>
+            }
+          </div>
+
+          @if (product.icon) {
+            <div class="product-card__icon">
+              <img [src]="product.icon" [alt]="product.name + ' icon'" width="64" height="64">
+            </div>
+          }
+
+          <h3 class="product-card__title">{{ product.name }}</h3>
+          <p class="product-card__tagline">{{ product.tagline }}</p>
+          <p class="product-card__description">{{ product.description }}</p>
+
+          <ul class="product-card__highlights">
+            @for (highlight of product.highlights; track highlight) {
+              <li>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7l3.5 3.5L12 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {{ highlight }}
+              </li>
+            }
+          </ul>
+
+          <a [href]="product.link" class="btn btn--primary product-card__cta">
+            Learn More
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+</section>
