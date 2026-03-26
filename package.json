@@ -9,7 +9,10 @@
     "test": "ng test",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:unit": "ng test --watch=false --browsers=ChromeHeadless"
+    "test:unit": "ng test --watch=false --browsers=ChromeHeadless",
+    "directus:migrate": "node directus/migrations/001-schema.mjs",
+    "directus:start": "docker compose -f directus/docker-compose.yml up -d",
+    "directus:stop": "docker compose -f directus/docker-compose.yml down"
   },
   "private": true,
   "dependencies": {
