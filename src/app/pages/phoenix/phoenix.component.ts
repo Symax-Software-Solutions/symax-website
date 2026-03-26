@@ -9,7 +9,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
   standalone: true,
   imports: [RouterLink, NavbarComponent, FooterComponent],
   templateUrl: './phoenix.component.html',
-  styleUrl: './phoenix.component.scss',
+  styleUrl: './phoenix.component.less',
 })
 export class PhoenixComponent {
   content = SITE_CONTENT.phoenix;

@@ -11,7 +11,7 @@ import { DirectusEvent } from '../../services/directus.interfaces';
   standalone: true,
   imports: [CommonModule, RouterLink, NavbarComponent, FooterComponent, DatePipe],
   templateUrl: './events.component.html',
-  styleUrl: './events.component.scss',
+  styleUrl: './events.component.less',
 })
 export class EventsComponent implements OnInit {
   events = signal<DirectusEvent[]>([]);

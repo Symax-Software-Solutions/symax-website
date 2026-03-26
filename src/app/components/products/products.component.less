@@ -10,7 +10,7 @@
     left: -200px;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(232, 57, 14, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.06) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -50,9 +50,9 @@
   }
 
   &:hover {
-    border-color: rgba(232, 57, 14, 0.3);
+    border-color: rgba(var(--color-accent-rgb), 0.3);
     transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(232, 57, 14, 0.1);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(var(--color-accent-rgb), 0.1);
 
     &::before {
       opacity: 1;
@@ -76,9 +76,9 @@
 
   &__badge {
     display: inline-block;
-    background: rgba(232, 57, 14, 0.15);
+    background: rgba(var(--color-accent-rgb), 0.15);
     color: var(--color-accent-2);
-    border: 1px solid rgba(232, 57, 14, 0.25);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.25);
     padding: 4px 10px;
     border-radius: 100px;
     font-size: 0.7rem;

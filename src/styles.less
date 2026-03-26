@@ -11,11 +11,10 @@
   --color-surface:      #222222;
   --color-border:       #2a2a2a;
 
-  --color-accent:       #C8424C;
-  --color-accent-2:     #d9555f;
-  --color-accent-glow:  rgba(200, 66, 76, 0.25);
-  --color-accent-dim:   rgba(200, 66, 76, 0.12);
-  --color-accent-border: rgba(200, 66, 76, 0.3);
+  --color-accent:       #e8390e;
+  --color-accent-2:     #ff6b35;
+  --color-accent-rgb:   232, 57, 14;
+  --color-accent-glow:  rgba(232, 57, 14, 0.25);
 
   --color-text:         #ffffff;
   --color-text-muted:   #999999;
@@ -146,7 +145,7 @@ ul, ol {
   }
 
   h2 {
-    @extend .heading-lg;
+    &:extend(.heading-lg);
     margin-bottom: 16px;
   }
 
@@ -258,11 +257,11 @@ ul, ol {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-surface);
+  background: var(--color-scrollbar-thumb, var(--color-surface));
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+  background: var(--color-scrollbar-thumb-hover, var(--color-accent));
 }
 
 // ---- Selection ---------------------------------------------

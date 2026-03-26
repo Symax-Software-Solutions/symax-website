@@ -10,7 +10,7 @@ import { SITE_CONTENT } from '../../content';
   standalone: true,
   imports: [RouterLink, NavbarComponent, FooterComponent],
   templateUrl: './symax-home.component.html',
-  styleUrl: './symax-home.component.scss',
+  styleUrl: './symax-home.component.less',
 })
 export class SymaxHomeComponent implements AfterViewInit, OnDestroy {
   content = SITE_CONTENT.symaxHome;

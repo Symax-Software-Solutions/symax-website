@@ -11,7 +11,7 @@ import { DirectusEvent, ScoreboardEntry } from '../../../services/directus.inter
   standalone: true,
   imports: [CommonModule, RouterLink, NavbarComponent, FooterComponent, DatePipe],
   templateUrl: './event-detail.component.html',
-  styleUrl: './event-detail.component.scss',
+  styleUrl: './event-detail.component.less',
 })
 export class EventDetailComponent implements OnInit {
   event = signal<DirectusEvent | null>(null);

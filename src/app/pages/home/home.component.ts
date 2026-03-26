@@ -37,6 +37,15 @@ import { FooterComponent } from '../../components/footer/footer.component';
     <app-footer></app-footer>
   `,
   styles: [`
+    :host {
+      --color-accent:      #C8424C;
+      --color-accent-2:    #D95A63;
+      --color-accent-rgb:  200, 66, 76;
+      --color-accent-glow: rgba(200, 66, 76, 0.25);
+    }
+    ::ng-deep :root {
+      --color-scrollbar-thumb-hover: #C8424C;
+    }
     main { display: block; }
   `],
 })
