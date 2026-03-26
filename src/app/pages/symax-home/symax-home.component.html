@@ -1,0 +1,128 @@
+<app-navbar></app-navbar>
+
+<main class="symax-home">
+
+  <!-- ─── Hero ─────────────────────────────────────────────────────────────── -->
+  <section class="sh-hero">
+    <div class="sh-hero__bg">
+      <div class="sh-hero__orb sh-hero__orb--1"></div>
+      <div class="sh-hero__orb sh-hero__orb--2"></div>
+      <div class="sh-hero__grid"></div>
+    </div>
+    <div class="container">
+      <div class="sh-hero__inner">
+        <div class="sh-hero__eyebrow" #animEl>
+          <span class="sh-hero__badge">
+            <span class="sh-hero__badge-dot"></span>
+            {{ content.hero.badge }}
+          </span>
+        </div>
+        <h1 class="sh-hero__headline" #animEl>
+          @for (line of content.hero.headlineLines; track line) {
+            <span class="sh-hero__headline-line">{{ line }}</span>
+          }
+        </h1>
+        <p class="sh-hero__sub" #animEl>{{ content.hero.subtitle }}</p>
+        <div class="sh-hero__actions" #animEl>
+          <a href="#products" class="btn-sh btn-sh--primary">
+            {{ content.hero.cta1 }}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a [href]="'mailto:' + content.hero.email" class="btn-sh btn-sh--ghost">{{ content.hero.cta2 }}</a>
+        </div>
+        <div class="sh-hero__clients" #animEl>
+          <span class="sh-hero__clients-label">Trusted by</span>
+          @for (client of content.hero.clients; track client) {
+            <span class="sh-hero__client">{{ client }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Products ─────────────────────────────────────────────────────────── -->
+  <section id="products" class="sh-section">
+    <div class="container">
+      <div class="sh-section-header" #animEl>
+        <span class="sh-label">{{ content.products.label }}</span>
+        <h2 class="sh-heading">{{ content.products.heading }}</h2>
+        <p class="sh-sub">{{ content.products.subheading }}</p>
+      </div>
+      <div class="sh-products-grid">
+        @for (product of content.products.items; track product.id; let i = $index) {
+          <div class="sh-product-card" [class.sh-product-card--featured]="product.featured" #animEl [style.transition-delay]="i * 100 + 'ms'">
+            <div class="sh-product-card__header">
+              <div class="sh-product-card__icon">{{ product.icon }}</div>
+              @if (product.badge) {
+                <span class="sh-product-card__badge">{{ product.badge }}</span>
+              }
+            </div>
+            <h3 class="sh-product-card__name">{{ product.name }}</h3>
+            <p class="sh-product-card__desc">{{ product.description }}</p>
+            @if (product.link.startsWith('http')) {
+              <a [href]="product.link" target="_blank" rel="noopener" class="sh-product-card__link">
+                {{ product.cta }}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            } @else {
+              <a [routerLink]="product.link" class="sh-product-card__link">
+                {{ product.cta }}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Why Symax ─────────────────────────────────────────────────────────── -->
+  <section class="sh-section sh-section--muted">
+    <div class="container">
+      <div class="sh-section-header" #animEl>
+        <span class="sh-label">{{ content.why.label }}</span>
+        <h2 class="sh-heading">{{ content.why.heading }}</h2>
+      </div>
+      <div class="sh-pillars">
+        @for (pillar of content.why.pillars; track pillar.title; let i = $index) {
+          <div class="sh-pillar" #animEl [style.transition-delay]="i * 80 + 'ms'">
+            <div class="sh-pillar__icon">{{ pillar.icon }}</div>
+            <h3 class="sh-pillar__title">{{ pillar.title }}</h3>
+            <p class="sh-pillar__text">{{ pillar.text }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Stats ─────────────────────────────────────────────────────────────── -->
+  <section class="sh-stats" #animEl>
+    <div class="container">
+      <div class="sh-stats__grid">
+        @for (stat of content.stats; track stat.value) {
+          <div class="sh-stat">
+            <span class="sh-stat__value">{{ stat.value }}</span>
+            <span class="sh-stat__label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ──────────────────────────────────────────────────────────────── -->
+  <section id="contact" class="sh-cta">
+    <div class="container">
+      <div class="sh-cta__inner" #animEl>
+        <h2 class="sh-cta__heading">{{ content.cta.heading }}</h2>
+        <p class="sh-cta__sub">{{ content.cta.subtext }}</p>
+        <a [href]="'mailto:' + content.cta.email" class="btn-sh btn-sh--primary btn-sh--lg">
+          {{ content.cta.button }}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<app-footer></app-footer>
