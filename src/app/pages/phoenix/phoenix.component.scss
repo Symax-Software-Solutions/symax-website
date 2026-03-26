@@ -25,7 +25,7 @@
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #C8424C;
+    color: var(--color-accent);
     background: rgba(200, 66, 76, 0.1);
     border: 1px solid rgba(200, 66, 76, 0.25);
     border-radius: 20px;
@@ -52,7 +52,7 @@
 
   &__tagline {
     font-size: 1.15rem;
-    color: #C8424C;
+    color: var(--color-accent);
     font-weight: 600;
     margin-bottom: 1rem;
   }
@@ -163,9 +163,9 @@
     &--leader {
       background: rgba(200, 66, 76, 0.1);
       border: 1px solid rgba(200, 66, 76, 0.2);
-      .screen__col--pos { color: #C8424C; }
+      .screen__col--pos { color: var(--color-accent); }
       .screen__col--name { color: #ffffff; font-weight: 700; }
-      .screen__col--time { color: #C8424C; font-weight: 700; }
+      .screen__col--time { color: var(--color-accent); font-weight: 700; }
     }
   }
 
@@ -293,7 +293,7 @@
     font-size: 0.8rem;
     color: rgba(255,255,255,0.5);
 
-    svg { color: #C8424C; flex-shrink: 0; }
+    svg { color: var(--color-accent); flex-shrink: 0; }
   }
 }
 

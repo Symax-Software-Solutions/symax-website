@@ -7,9 +7,9 @@ $bg-dark: #0A0E1A;
 $bg-dark-2: #0D1220;
 $bg-light: #F8FAFC;
 $bg-light-2: #F1F5F9;
-$orange: #C8424C;
-$orange-dim: rgba(200, 66, 76, 0.12);
-$orange-border: rgba(200, 66, 76, 0.3);
+
+
+
 $purple: #6B21A8;
 $text-white: #FFFFFF;
 $text-muted: #94A3B8;
@@ -43,7 +43,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: $orange;
+  color: var(--color-accent);
   margin-bottom: 12px;
 }
 
@@ -74,19 +74,19 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   align-items: center;
   gap: 8px;
   padding: 14px 28px;
-  background: $orange;
+  background: var(--color-accent);
   color: #fff;
   font-family: $font-sans;
   font-size: 0.9rem;
   font-weight: 600;
   border-radius: 8px;
-  border: 1px solid $orange;
+  border: 1px solid var(--color-accent);
   text-decoration: none;
   transition: all 0.25s ease;
   cursor: pointer;
 
   &:hover {
-    background: lighten($orange, 6%);
+    background: var(--color-accent-2);
     transform: translateY(-2px);
     box-shadow: 0 8px 32px rgba(200, 66, 76, 0.3);
   }
@@ -327,7 +327,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   &__event-name {
     font-family: $font-mono;
     font-size: 0.7rem;
-    color: $orange;
+    color: var(--color-accent);
     font-weight: 600;
     letter-spacing: 0.02em;
   }
@@ -375,16 +375,16 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     }
 
     &--first {
-      .terminal__col--rank { color: $orange; }
-      .terminal__col--time { color: $orange; }
+      .terminal__col--rank { color: var(--color-accent); }
+      .terminal__col--time { color: var(--color-accent); }
     }
 
     &--live {
       background: rgba(200, 66, 76, 0.06);
-      border-left: 2px solid $orange;
+      border-left: 2px solid var(--color-accent);
       padding-left: 10px;
 
-      .terminal__col--name { color: $orange; }
+      .terminal__col--name { color: var(--color-accent); }
       .terminal__col--time { color: rgba(255, 255, 255, 0.3); }
     }
   }
@@ -500,9 +500,9 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   font-family: $font-sans;
   font-size: 0.78rem;
   font-weight: 600;
-  color: $orange;
-  background: $orange-dim;
-  border: 1px solid $orange-border;
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent-border);
   border-radius: 100px;
   white-space: nowrap;
 }
@@ -635,8 +635,8 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     &--gold {
       background: rgba(200, 66, 76, 0.04);
 
-      .screen__td--pos { color: $orange; font-weight: 700; }
-      .screen__td--fin { color: $orange; }
+      .screen__td--pos { color: var(--color-accent); font-weight: 700; }
+      .screen__td--fin { color: var(--color-accent); }
     }
 
     &--live {
@@ -676,7 +676,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     }
 
     &--best {
-      color: $orange !important;
+      color: var(--color-accent) !important;
     }
   }
 
@@ -699,7 +699,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     }
 
     &--otk {
-      color: $orange;
+      color: var(--color-accent);
       background: rgba(200, 66, 76, 0.12);
       animation: pulse-status 1.5s ease-in-out infinite;
     }
@@ -723,7 +723,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     margin-bottom: 64px;
 
     .section-label {
-      color: $orange;
+      color: var(--color-accent);
     }
   }
 
@@ -745,7 +745,7 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: $orange;
+    color: var(--color-accent);
     margin-bottom: 16px;
   }
 
@@ -823,8 +823,8 @@ $font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $orange-dim;
-    border: 1px solid $orange-border;
+    background: var(--color-accent-dim);
+    border: 1px solid var(--color-accent-border);
     border-radius: 14px;
   }
 
