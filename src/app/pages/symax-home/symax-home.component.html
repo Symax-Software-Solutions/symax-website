@@ -223,20 +223,22 @@
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
   <section class="racehub">
     <div class="container racehub__inner" #animEl>
-      <div class="racehub__icon">🏁</div>
+      <div class="racehub__icon">
+        <img src="assets/racehub/Racehub_logo_red_black_gradient_500x500.png" alt="RaceHub logo" />
+      </div>
       <div class="racehub__content">
-        <span class="section-label">{{ content.racehub.label }}</span>
+        <span class="section-label racehub__label">{{ content.racehub.label }}</span>
         <h2 class="section-heading section-heading--sm">{{ content.racehub.heading }}</h2>
         <p class="section-sub">{{ content.racehub.description }}</p>
         <ul class="racehub__bullets">
           @for (bullet of content.racehub.bullets; track bullet) {
             <li class="racehub__bullet">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12l-3.5-3.5" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12l-3.5-3.5" stroke="#C8424C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               {{ bullet }}
             </li>
           }
         </ul>
-        <a routerLink="/racing" class="btn-primary btn-primary--compact">
+        <a routerLink="/racing" class="btn-racehub">
           Learn about RaceHub
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>

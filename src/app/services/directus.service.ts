@@ -5,10 +5,11 @@ import { environment } from '../../environments/environment';
 import {
   DirectusEvent,
   DirectusTestimonial,
+  DirectusDownload,
   DirectusResponse,
   ScoreboardEntry,
 } from './directus.interfaces';
-import { MOCK_EVENTS, MOCK_TESTIMONIALS, MOCK_SCOREBOARD } from './directus-mock';
+import { MOCK_EVENTS, MOCK_TESTIMONIALS, MOCK_SCOREBOARD, MOCK_DOWNLOAD } from './directus-mock';
 
 @Injectable({
   providedIn: 'root',
@@ -56,6 +57,20 @@ export class DirectusService {
     return this.http.get<ScoreboardEntry[]>(url).pipe(
       catchError(() => of(MOCK_SCOREBOARD)),
     );
+  }
+
+  /** Fetch the latest published Phoenix download */
+  getLatestDownload(): Observable<DirectusDownload | null> {
+    const url = `${this.baseUrl}/items/phoenix_downloads?filter[status][_eq]=published&sort=-sort&limit=1&fields=*,windows_file.id,windows_file.filename_download,windows_file.filesize,macos_file.id,macos_file.filename_download,macos_file.filesize,linux_file.id,linux_file.filename_download,linux_file.filesize`;
+    return this.http.get<DirectusResponse<DirectusDownload[]>>(url).pipe(
+      map((res) => (res.data.length > 0 ? res.data[0] : null)),
+      catchError(() => of(MOCK_DOWNLOAD)),
+    );
+  }
+
+  /** Get the full asset URL for a Directus file */
+  getAssetUrl(fileId: string): string {
+    return `${this.baseUrl}/assets/${fileId}`;
   }
 
   /** Get the full image URL for a Directus file */

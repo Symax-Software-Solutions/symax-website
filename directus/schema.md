@@ -50,6 +50,33 @@ Customer testimonials displayed on the website.
 
 ---
 
+## Collection: `phoenix_downloads`
+
+Phoenix software releases. The website automatically displays the latest published version on the Phoenix product page. Upload installer files per platform — any platform without a file shows "Coming soon".
+
+| Field | Type | Interface | Notes |
+|-------|------|-----------|-------|
+| `id` | uuid | — | Primary key (auto) |
+| `status` | string | Status | `published` / `draft` |
+| `sort` | integer | Sort | Higher sort = newer release (latest shown on site) |
+| `version` | string | Input | Version tag, e.g. `v2.0.1` |
+| `release_date` | date | DateTime | Release date |
+| `release_notes` | text | Textarea | Short changelog shown on the download page |
+| `windows_file` | file (M2O → directus_files) | File | Windows installer (.exe) |
+| `macos_file` | file (M2O → directus_files) | File | macOS installer (.dmg) |
+| `linux_file` | file (M2O → directus_files) | File | Linux package (.AppImage / .deb) |
+
+### Publishing a New Release
+
+1. Create a new item in `phoenix_downloads`
+2. Set `version` (e.g. `v2.1.0`) and `release_date`
+3. Write brief `release_notes`
+4. Upload the installer file(s) to the platform fields
+5. Set status to **Published**
+6. The website automatically picks up the latest published release — no code changes needed
+
+---
+
 ## Setting Up
 
 1. Go to **Settings → Data Model → Create Collection**
@@ -67,4 +94,5 @@ Make sure the **Public** role has read access to both collections, or create an 
 Go to **Settings → Access Control → Public** and grant:
 - `event_portfolio`: Read
 - `testimonials`: Read
-- `directus_files`: Read (needed for images)
+- `phoenix_downloads`: Read
+- `directus_files`: Read (needed for images and download files)

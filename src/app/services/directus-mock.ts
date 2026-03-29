@@ -1,4 +1,4 @@
-import { DirectusEvent, DirectusTestimonial } from './directus.interfaces';
+import { DirectusEvent, DirectusTestimonial, DirectusDownload } from './directus.interfaces';
 
 export const MOCK_EVENTS: DirectusEvent[] = [
   {
@@ -108,6 +108,18 @@ export const MOCK_TESTIMONIALS: DirectusTestimonial[] = [
     sort: 3,
   },
 ];
+
+export const MOCK_DOWNLOAD: DirectusDownload = {
+  id: 'dl-0001',
+  status: 'published',
+  version: 'v2.0',
+  release_date: '2026-03-01',
+  release_notes: 'First cloud release. Multi-tenant architecture, RaceHub integration, real-time SSE event stream.',
+  windows_file: null,
+  macos_file: null,
+  linux_file: null,
+  sort: 1,
+};
 
 export const MOCK_SCOREBOARD = [
   { pos: 1, name: 'T. Hrastnik', time: '00:41.832', gap: '—' },

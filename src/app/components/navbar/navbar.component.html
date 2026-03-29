@@ -3,7 +3,7 @@
 
     <!-- Logo -->
     <a class="navbar__logo" routerLink="/">
-      <img src="assets/images/SYMAX_white.png" alt="Symax Software Solutions" height="36">
+      <img src="assets/symax/SYMAX_white_nosub_200x72.png" alt="Symax Software Solutions" height="36">
     </a>
 
     <!-- Desktop links -->
@@ -32,10 +32,10 @@
               <div class="navbar__dropdown-desc">Cloud timing & scoring platform</div>
             </div>
           </a>
-          <a class="navbar__dropdown-item" routerLink="/racing" (click)="solutionsOpen.set(false)">
+          <a class="navbar__dropdown-item" href="https://race-hub.io" target="_blank" rel="noopener noreferrer" (click)="solutionsOpen.set(false)">
             <div class="navbar__dropdown-icon">🏁</div>
             <div>
-              <div class="navbar__dropdown-name">RaceHub</div>
+              <div class="navbar__dropdown-name">RaceHub <span class="navbar__external-icon">↗</span></div>
               <div class="navbar__dropdown-desc">Event registration platform</div>
             </div>
           </a>
@@ -58,7 +58,6 @@
       </div>
 
       <a class="navbar__link" routerLink="/events" data-testid="nav-portfolio">Portfolio</a>
-      <a class="navbar__link" routerLink="/racing">Racing</a>
       <a class="navbar__link" href="/#contact" (click)="scrollToContact()">Contact</a>
       <button class="btn btn--primary btn--sm" (click)="scrollToContact()">Get in Touch</button>
     </div>
@@ -77,15 +76,14 @@
     <a class="navbar__mobile-link" routerLink="/phoenix" (click)="closeMobile()">
       ⚡ Phoenix Timing
     </a>
-    <a class="navbar__mobile-link" routerLink="/racing" (click)="closeMobile()">
-      🏁 RaceHub
+    <a class="navbar__mobile-link" href="https://race-hub.io" target="_blank" rel="noopener noreferrer" (click)="closeMobile()">
+      🏁 RaceHub <span class="navbar__external-icon">↗</span>
     </a>
     <a class="navbar__mobile-link navbar__mobile-link--soon" href="#agentic-crew" (click)="closeMobile()">
       🤖 Agentic Crew <span class="navbar__dropdown-badge">Coming Soon</span>
     </a>
     <div class="navbar__mobile-divider"></div>
     <a class="navbar__mobile-link" routerLink="/events" (click)="closeMobile()" data-testid="nav-portfolio-mobile">Portfolio</a>
-    <a class="navbar__mobile-link" routerLink="/racing" (click)="closeMobile()">Racing</a>
     <a class="navbar__mobile-link" href="#contact" (click)="closeMobile()">Contact</a>
     <button class="btn btn--primary" (click)="scrollToContact()">Get in Touch</button>
   </div>
