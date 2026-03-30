@@ -163,7 +163,7 @@ export const SITE_CONTENT = {
   contact: {
     headline: 'Ready to Elevate Your Events?',
     subtext: 'Whether you\'re timing a local race or the world championships — let\'s talk about what Phoenix can do for you.',
-    email: 'michael.voss@symaxsoftware.com',
+    email: 'info@symaxsoftware.com',
   },
 
   phoenix: {
@@ -261,7 +261,7 @@ export const SITE_CONTENT = {
       { name: 'UCI', compat: false },
       { name: 'Swisstiming', compat: false },
       { name: 'Velosolutions', compat: false },
-      { name: 'Red Bull Pumptrack', compat: false },
+      { name: 'Moto-Sheets', compat: false },
       { name: 'MYLAPS', compat: true },
       { name: 'Race Result', compat: true },
     ],
@@ -273,7 +273,7 @@ export const SITE_CONTENT = {
     },
     proof: {
       label: 'Proven at the Highest Level',
-      caseStudy: 'In 2024, Swisstiming contracted Symax to deliver live graphics for the UCI Mountain Bike World Championships in Switzerland. Phoenix processed every result, live, to broadcast — the same platform available to timing providers today.',
+      caseStudy: 'In 2025, Swisstiming contracted Symax to deliver live graphics for the UCI Mountain Bike World Championships in Switzerland. Phoenix processed every result, live, to broadcast — the same platform available to timing providers today.',
       stats: [
         { value: '4+', label: 'Pumptrack World Championships' },
         { value: '2,300+', label: 'Riders per event' },
