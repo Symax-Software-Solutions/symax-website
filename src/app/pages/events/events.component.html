@@ -38,7 +38,7 @@
         <div class="events-grid" data-testid="events-grid">
           @for (event of events(); track event.id) {
             <div class="event-card" data-testid="event-card">
-              <div class="event-card__image" [style.background-image]="event.cover_image ? 'url(' + event.cover_image + ')' : ''">
+              <div class="event-card__image" [style.background-image]="event.cover_image ? 'url(http://localhost:8055/assets/' + event.cover_image + ')' : ''">
                 @if (!event.cover_image) {
                   <div class="event-card__gradient"></div>
                 }

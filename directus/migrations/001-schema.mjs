@@ -86,7 +86,36 @@ async function createField(token, collection, payload) {
   }
 }
 
-async function grantPublicRead(token, collection) {
+async function patchIdField(token, collection) {
+  const res = await request(token, 'PATCH', `/fields/${collection}/id`, {
+    meta: { special: ['uuid'] },
+  })
+  if (res.data) {
+    console.log(`  ✅ Patched id field on "${collection}" → auto-generate UUID`)
+  } else {
+    console.log(`  ❌ Failed to patch id on "${collection}": ${res.errors?.[0]?.message}`)
+  }
+}
+
+async function createRelation(token, collection, field) {
+  const existing = await request(token, 'GET', `/relations/${collection}/${field}`)
+  if (existing.data) {
+    process.stdout.write(`  ⏭  relation ${field}→directus_files `)
+    return
+  }
+  const res = await request(token, 'POST', '/relations', {
+    collection,
+    field,
+    related_collection: 'directus_files',
+  })
+  if (res.data) {
+    process.stdout.write(`  ✅ relation ${field}→directus_files `)
+  } else {
+    process.stdout.write(`  ❌ relation ${field}(${res.errors?.[0]?.message}) `)
+  }
+}
+
+async function grantPublicRead(token, collection, filterByStatus = true) {
   // Find the public policy
   const policies = await request(token, 'GET', '/policies')
   const publicPolicy = policies.data?.find(p =>
@@ -106,15 +135,19 @@ async function grantPublicRead(token, collection) {
     return
   }
 
-  const res = await request(token, 'POST', '/permissions', {
+  const payload = {
     policy: publicPolicy.id,
     collection,
     action: 'read',
     fields: ['*'],
-    permissions: { status: { _eq: 'published' } },
-  })
+  }
+  if (filterByStatus) {
+    payload.permissions = { status: { _eq: 'published' } }
+  }
+
+  const res = await request(token, 'POST', '/permissions', payload)
   if (res.data) {
-    console.log(`  ✅ Public read granted on "${collection}" (published items only)`)
+    console.log(`  ✅ Public read granted on "${collection}"${filterByStatus ? ' (published items only)' : ''}`)
   } else {
     console.log(`  ❌ Failed: ${res.errors?.[0]?.message}`)
   }
@@ -243,6 +276,45 @@ const TESTIMONIALS_FIELDS = [
   },
 ]
 
+const PHOENIX_DOWNLOADS_FIELDS = [
+  {
+    field: 'version',
+    type: 'string',
+    meta: { width: 'half', interface: 'input', required: true, options: { placeholder: 'v2.0.1' }, note: 'Version tag shown on the download page' },
+    schema: {},
+  },
+  {
+    field: 'release_date',
+    type: 'date',
+    meta: { width: 'half', interface: 'datetime', required: true },
+    schema: {},
+  },
+  {
+    field: 'release_notes',
+    type: 'text',
+    meta: { width: 'full', interface: 'input-multiline', note: 'Short release notes shown below the download cards' },
+    schema: {},
+  },
+  {
+    field: 'windows_file',
+    type: 'uuid',
+    meta: { width: 'full', interface: 'file', special: ['file'], note: 'Windows installer (.exe). Leave empty if not available.' },
+    schema: {},
+  },
+  {
+    field: 'macos_file',
+    type: 'uuid',
+    meta: { width: 'full', interface: 'file', special: ['file'], note: 'macOS installer (.dmg). Leave empty if not available.' },
+    schema: {},
+  },
+  {
+    field: 'linux_file',
+    type: 'uuid',
+    meta: { width: 'full', interface: 'file', special: ['file'], note: 'Linux package (.AppImage / .deb). Leave empty if not available.' },
+    schema: {},
+  },
+]
+
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -273,7 +345,7 @@ async function main() {
     },
     schema: {},
     fields: [
-      { field: 'id', type: 'uuid', meta: { hidden: true, readonly: true }, schema: { is_primary_key: true, has_auto_increment: false } },
+      { field: 'id', type: 'uuid', meta: { hidden: true, readonly: true, special: ['uuid'] }, schema: { is_primary_key: true, has_auto_increment: false } },
       {
         field: 'status', type: 'string',
         meta: {
@@ -289,10 +361,16 @@ async function main() {
     ],
   })
 
+  await patchIdField(token, 'event_portfolio')
+
   console.log('  Adding fields:')
   for (const field of EVENT_PORTFOLIO_FIELDS) {
     await createField(token, 'event_portfolio', field)
   }
+  console.log('\n')
+
+  console.log('  File relations:')
+  await createRelation(token, 'event_portfolio', 'cover_image')
   console.log('\n')
 
   console.log('  Permissions:')
@@ -309,7 +387,7 @@ async function main() {
     },
     schema: {},
     fields: [
-      { field: 'id', type: 'uuid', meta: { hidden: true, readonly: true }, schema: { is_primary_key: true, has_auto_increment: false } },
+      { field: 'id', type: 'uuid', meta: { hidden: true, readonly: true, special: ['uuid'] }, schema: { is_primary_key: true, has_auto_increment: false } },
       {
         field: 'status', type: 'string',
         meta: {
@@ -323,6 +401,8 @@ async function main() {
     ],
   })
 
+  await patchIdField(token, 'testimonials')
+
   console.log('  Adding fields:')
   for (const field of TESTIMONIALS_FIELDS) {
     await createField(token, 'testimonials', field)
@@ -332,9 +412,56 @@ async function main() {
   console.log('  Permissions:')
   await grantPublicRead(token, 'testimonials')
 
+  // ── phoenix_downloads ───────────────────────────────────────────────────
+  console.log('\n📁 phoenix_downloads')
+  await createCollection(token, {
+    collection: 'phoenix_downloads',
+    meta: {
+      display_template: '{{version}} — {{release_date}}',
+      sort_field: 'sort',
+      icon: 'download',
+    },
+    schema: {},
+    fields: [
+      { field: 'id', type: 'uuid', meta: { hidden: true, readonly: true, special: ['uuid'] }, schema: { is_primary_key: true, has_auto_increment: false } },
+      {
+        field: 'status', type: 'string',
+        meta: {
+          width: 'half',
+          interface: 'select-dropdown',
+          options: { choices: [{ text: 'Published', value: 'published' }, { text: 'Draft', value: 'draft' }] },
+        },
+        schema: { default_value: 'draft' },
+      },
+      { field: 'sort', type: 'integer', meta: { hidden: true }, schema: {} },
+    ],
+  })
+
+  await patchIdField(token, 'phoenix_downloads')
+
+  console.log('  Adding fields:')
+  for (const field of PHOENIX_DOWNLOADS_FIELDS) {
+    await createField(token, 'phoenix_downloads', field)
+  }
+  console.log('\n')
+
+  console.log('  File relations:')
+  await createRelation(token, 'phoenix_downloads', 'windows_file')
+  await createRelation(token, 'phoenix_downloads', 'macos_file')
+  await createRelation(token, 'phoenix_downloads', 'linux_file')
+  console.log('\n')
+
+  console.log('  Permissions:')
+  await grantPublicRead(token, 'phoenix_downloads')
+
+  // ── directus_files (needed for file field expansion & asset downloads) ───
+  console.log('\n📁 directus_files')
+  console.log('  Permissions:')
+  await grantPublicRead(token, 'directus_files', false)
+
   console.log('\n✅ Migration complete!\n')
   console.log(`   Admin UI: ${BASE}/admin`)
-  console.log(`   Collections: event_portfolio, testimonials\n`)
+  console.log(`   Collections: event_portfolio, testimonials, phoenix_downloads\n`)
 }
 
 main().catch(e => {

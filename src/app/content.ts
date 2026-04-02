@@ -25,7 +25,7 @@ export const SITE_CONTENT = {
     headlineLine3: 'One Platform.',
     subtitle: 'Powering the world\'s biggest cycling events since 2022.',
     cta: 'Explore Our Solutions',
-    backgroundImage: 'assets/images/banner.jpg',
+    backgroundImage: 'assets/images/banner1_1700.jpg',
   },
 
   products: [
@@ -36,12 +36,12 @@ export const SITE_CONTENT = {
       description: 'Hardware-agnostic cloud platform delivering real-time results at scale. Multi-tenant architecture means one deployment powers dozens of organizations. Trusted by Swisstiming at UCI World Championships.',
       logo: 'assets/images/phoenix_timing_scoring_logo.png',
       icon: null,
-      badge: 'UCI World Championships',
+      badge: 'Timing & Scoring Platform',
       highlights: [
         'Cloud-based — access anywhere',
-        'Hardware-agnostic RFID support',
+        'Full MyLaps and RaceResults support',
         'Real-time live leaderboards',
-        'Multi-tenant architecture',
+        'Multi-user architecture',
         'Broadcast-ready graphics output',
       ],
       link: '/phoenix',
@@ -50,10 +50,10 @@ export const SITE_CONTENT = {
       id: 'racehub',
       name: 'RaceHub',
       tagline: 'Event registration, reimagined.',
-      description: 'The modern registration platform built for cycling. Athlete profiles, seamless Phoenix integration, and simple pricing — €1 per registration, no hidden fees. Organizers love it. Athletes use it once and never go back.',
-      logo: 'assets/images/race_hub_logo.png',
+      description: 'The modern registration platform built for cycling. Athlete profiles, seamless Phoenix integration, and simple pricing — the cost? €1 per registration, no hidden fees. Organizers love it. Athletes use it once and never go back. Start using racehub for free now!',
+      logo: 'assets/racehub/Racehub_logo_red_black_gradient_500x500_flat.png',
       icon: null,
-      badge: '€1 / registration',
+      badge: 'Registration & Live Timing',
       highlights: [
         'Athlete profiles & history',
         'Seamless Phoenix integration',
@@ -61,7 +61,7 @@ export const SITE_CONTENT = {
         'Mobile-optimized athlete flow',
         'Organizer dashboard',
       ],
-      link: '#contact',
+      link: 'https://race-hub.io',
     },
   ],
 
@@ -163,7 +163,7 @@ export const SITE_CONTENT = {
   contact: {
     headline: 'Ready to Elevate Your Events?',
     subtext: 'Whether you\'re timing a local race or the world championships — let\'s talk about what Phoenix can do for you.',
-    email: 'michael.voss@symaxsoftware.com',
+    email: 'info@symaxsoftware.com',
   },
 
   phoenix: {
@@ -216,17 +216,17 @@ export const SITE_CONTENT = {
     download: {
       headline: 'Download Phoenix',
       description: 'Get the latest version of Phoenix Timing & Scoring. Available for Windows. macOS and Linux coming soon.',
-      version: 'v2.0',
+      version: 'v1.0.0',
       releaseDate: 'March 2026',
-      releaseNotes: 'First cloud release. Multi-tenant architecture, RaceHub integration, real-time SSE event stream.',
+      releaseNotes: 'First release. Professional race management for pumptrack and road cycling events.',
       platforms: [
         {
           os: 'Windows',
           icon: '🪟',
           available: true,
-          filename: 'Phoenix-Setup-2.0.0.exe',
-          url: '#download-windows',
-          size: '~85 MB',
+          filename: 'PhoenixTS1.0.0.exe',
+          url: null,
+          size: '~126 MB',
         },
         {
           os: 'macOS',
@@ -254,14 +254,14 @@ export const SITE_CONTENT = {
   },
   symaxHome: {
     hero: {
-      subtitle: 'Phoenix is the cloud-native timing platform trusted by Swisstiming at the UCI World Championships. Hardware-agnostic. Real-time. Broadcast-ready.',
+      subtitle: 'Phoenix is the cloud-native timing platform trusted by many and used at the UCI World Championships. Hardware-agnostic. Real-time. Broadcast-ready.',
       terminalFooter: '6 riders processed · stream active',
     },
     trustBar: [
       { name: 'UCI', compat: false },
       { name: 'Swisstiming', compat: false },
       { name: 'Velosolutions', compat: false },
-      { name: 'Red Bull Pumptrack', compat: false },
+      { name: 'Moto-Sheets', compat: false },
       { name: 'MYLAPS', compat: true },
       { name: 'Race Result', compat: true },
     ],
@@ -273,7 +273,7 @@ export const SITE_CONTENT = {
     },
     proof: {
       label: 'Proven at the Highest Level',
-      caseStudy: 'In 2024, Swisstiming contracted Symax to deliver live graphics for the UCI Mountain Bike World Championships in Switzerland. Phoenix processed every result, live, to broadcast — the same platform available to timing providers today.',
+      caseStudy: 'In 2025, Swisstiming contracted Symax to deliver live graphics for the UCI Mountain Bike World Championships in Switzerland. Phoenix processed every result, live, to broadcast — the same platform available to timing providers today.',
       stats: [
         { value: '4+', label: 'Pumptrack World Championships' },
         { value: '2,300+', label: 'Riders per event' },

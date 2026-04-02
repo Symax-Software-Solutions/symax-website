@@ -25,6 +25,7 @@ export interface DirectusFile {
   filename_download: string;
   title: string | null;
   type: string;
+  filesize: number | string | null;
 }
 
 export interface DirectusEventFile {
@@ -39,6 +40,18 @@ export interface DirectusTestimonial {
   author_name: string;
   author_role: string;
   author_initials: string;
+  sort: number;
+}
+
+export interface DirectusDownload {
+  id: string;
+  status: 'published' | 'draft';
+  version: string;
+  release_date: string;
+  release_notes: string;
+  windows_file: string | DirectusFile | null;
+  macos_file: string | DirectusFile | null;
+  linux_file: string | DirectusFile | null;
   sort: number;
 }
 
