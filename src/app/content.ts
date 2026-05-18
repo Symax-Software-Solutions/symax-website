@@ -201,7 +201,7 @@ export const SITE_CONTENT = {
       headline: 'Phoenix Timing & Scoring',
       tagline: 'The cloud timing platform built for serious events.',
       description: 'Hardware-agnostic, cloud-native, broadcast-ready. Phoenix powers UCI World Championships and local club races with equal precision.',
-      badge: 'The new standard timing platform',
+      badge: 'The new industry standard for timing & scoring',
     },
     features: [
       {
