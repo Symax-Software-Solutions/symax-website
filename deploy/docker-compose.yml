@@ -15,7 +15,7 @@ services:
       - web
 
   directus:
-    image: directus/directus:latest
+    image: directus/directus:11.17.4
     restart: unless-stopped
     environment:
       SECRET: ${DIRECTUS_SECRET}
