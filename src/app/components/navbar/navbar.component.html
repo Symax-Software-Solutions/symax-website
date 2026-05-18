@@ -2,8 +2,15 @@
   <div class="navbar__inner container">
 
     <!-- Logo -->
-    <a class="navbar__logo" routerLink="/">
-      <img src="assets/symax/SYMAX_white_nosub_200x72.png" alt="Symax Software Solutions" height="36">
+    <a class="navbar__logo" routerLink="/" aria-label="Symax Software Solutions — home">
+      <img
+        src="assets/symax/SYMAX_white_nosub_200x72.png"
+        alt="Symax Software Solutions"
+        width="100"
+        height="36"
+        fetchpriority="high"
+        decoding="async"
+      >
     </a>
 
     <!-- Desktop links -->
@@ -47,15 +54,22 @@
     </div>
 
     <!-- Hamburger -->
-    <button class="navbar__hamburger" (click)="toggleMobile()" [attr.aria-expanded]="mobileOpen()">
-      <span></span>
-      <span></span>
-      <span></span>
+    <button
+      type="button"
+      class="navbar__hamburger"
+      (click)="toggleMobile()"
+      [attr.aria-expanded]="mobileOpen()"
+      aria-controls="navbar-mobile-menu"
+      [attr.aria-label]="mobileOpen() ? 'Close navigation menu' : 'Open navigation menu'"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
     </button>
   </div>
 
   <!-- Mobile menu -->
-  <div class="navbar__mobile" [class.open]="mobileOpen()">
+  <div id="navbar-mobile-menu" class="navbar__mobile" [class.open]="mobileOpen()">
     <div class="navbar__mobile-section-label">Solutions</div>
     <a class="navbar__mobile-link" routerLink="/phoenix" (click)="closeMobile()">
       Phoenix Timing

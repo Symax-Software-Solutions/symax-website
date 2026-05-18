@@ -41,7 +41,7 @@
         <h1 class="event-hero__title" data-testid="event-detail-title">{{ ev.title }}</h1>
         <p class="event-hero__subtitle">{{ ev.subtitle }}</p>
         <div class="event-hero__meta">
-          <span class="event-hero__flag"><img [src]="'/assets/flags/png100px/'+ev.flag_emoji+'.png'" /></span>
+          <span class="event-hero__flag"><img [src]="'/assets/flags/png100px/'+ev.flag_emoji+'.png'" [alt]="ev.location + ' flag'" width="32" height="24" loading="lazy" decoding="async" /></span>
           <span class="event-hero__location">{{ ev.location }}</span>
           <span class="event-hero__date">{{ ev.date | date:'longDate' }}</span>
         </div>
@@ -135,7 +135,7 @@
           <div class="event-gallery__grid">
             @for (photo of ev.gallery; track photo.id) {
               <div class="event-gallery__item">
-                <img [src]="getGalleryImageUrl(photo.directus_files_id)" alt="Event photo" loading="lazy">
+                <img [src]="getGalleryImageUrl(photo.directus_files_id)" alt="Event photo" loading="lazy" decoding="async" width="600" height="400">
               </div>
             }
           </div>

@@ -1,0 +1,5 @@
+# Symax Software Solutions — https://symaxsoftware.com
+User-agent: *
+Allow: /
+
+Sitemap: https://symaxsoftware.com/sitemap.xml

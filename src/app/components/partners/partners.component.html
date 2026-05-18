@@ -10,7 +10,7 @@
       @for (partner of content; track partner.name) {
         <a [href]="partner.url" target="_blank" rel="noopener" class="partner-item" [attr.aria-label]="partner.name">
           @if (partner.logo) {
-            <img [src]="partner.logo" [alt]="partner.name" loading="lazy">
+            <img [src]="partner.logo" [alt]="partner.name" loading="lazy" decoding="async" width="160" height="60">
           } @else {
             <span class="partner-item__text">{{ partner.text }}</span>
           }
