@@ -51,14 +51,4 @@ export class NavbarComponent {
     this.router.navigate([path]);
   }
 
-  scrollToContact(): void {
-    this.closeMobile();
-    const el = document.getElementById('contact');
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 70;
-      window.scrollTo({ top, behavior: 'smooth' });
-    } else {
-      this.router.navigate(['/'], { fragment: 'contact' });
-    }
-  }
 }

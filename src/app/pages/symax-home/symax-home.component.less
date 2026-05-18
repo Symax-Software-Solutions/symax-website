@@ -138,30 +138,6 @@
   }
 }
 
-.btn-agentic {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: rgba(139, 92, 246, 0.15);
-  color: #A78BFA;
-  font-family: @font-sans;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
-
-  &:hover {
-    background: rgba(139, 92, 246, 0.25);
-    border-color: rgba(139, 92, 246, 0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
-  }
-}
-
 // - Scroll animation base -
 
 // -
@@ -911,90 +887,7 @@
 }
 
 // -
-// SECTION 6 - AGENTIC CREW
-// -
-.agentic {
-  position: relative;
-  padding: clamp(80px, 10vw, 120px) 0;
-  background: #0B0520;
-  overflow: hidden;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  &__orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-
-    &--1 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
-      top: -100px;
-      left: -100px;
-    }
-
-    &--2 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-      bottom: -80px;
-      right: -80px;
-    }
-  }
-
-  &__grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 80%);
-  }
-
-  &__inner {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    max-width: 560px;
-    margin: 0 auto;
-  }
-
-  &__eyebrow {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #A78BFA;
-    margin-bottom: 16px;
-  }
-
-  &__headline {
-    font-family: @font-sans;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800;
-    color: @text-white;
-    letter-spacing: -0.03em;
-    margin-bottom: 16px;
-  }
-
-  &__sub {
-    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-    color: rgba(255, 255, 255, 0.5);
-    line-height: 1.7;
-    margin-bottom: 32px;
-  }
-}
-
-// -
-// SECTION 7 - FINAL CTA
+// SECTION 6 - FINAL CTA
 // -
 .final-cta {
   .section-padding();

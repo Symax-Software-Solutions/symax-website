@@ -5,14 +5,14 @@ services:
     ports:
       - "8055:8055"
     environment:
-      SECRET: "symax-directus-secret-change-in-prod"
+      SECRET: "${DIRECTUS_SECRET:-change-me-local-secret}"
       DB_CLIENT: "sqlite3"
       DB_FILENAME: "/directus/database/data.db"
-      ADMIN_EMAIL: "michael.voss@symaxsoftware.com"
-      ADMIN_PASSWORD: "SYmax2026!"
-      PUBLIC_URL: "http://localhost:8055"
+      ADMIN_EMAIL: "${DIRECTUS_ADMIN_EMAIL:-admin@example.com}"
+      ADMIN_PASSWORD: "${DIRECTUS_ADMIN_PASSWORD:-change-me-local-password}"
+      PUBLIC_URL: "${DIRECTUS_PUBLIC_URL:-http://localhost:8055}"
       CORS_ENABLED: "true"
-      CORS_ORIGIN: "http://localhost:4400"
+      CORS_ORIGIN: "${DIRECTUS_CORS_ORIGIN:-http://localhost:4400}"
     volumes:
       - directus_db:/directus/database
       - directus_uploads:/directus/uploads

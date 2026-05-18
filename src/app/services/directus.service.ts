@@ -4,19 +4,34 @@ import { Observable, of, catchError, map } from 'rxjs';
 import { environment } from '../../environments/environment';
 import {
   DirectusEvent,
+  DirectusFile,
   DirectusTestimonial,
   DirectusDownload,
   DirectusResponse,
   ScoreboardEntry,
 } from './directus.interfaces';
-import { MOCK_EVENTS, MOCK_TESTIMONIALS, MOCK_SCOREBOARD, MOCK_DOWNLOAD } from './directus-mock';
+import { MOCK_TESTIMONIALS, MOCK_DOWNLOAD } from './directus-mock';
+
+interface RuntimeConfig {
+  directusUrl?: string;
+  phoenixApiUrl?: string;
+}
+
+declare global {
+  interface Window {
+    __SYMAX_CONFIG__?: RuntimeConfig;
+  }
+}
+
+const runtimeConfig: RuntimeConfig =
+  typeof window !== 'undefined' ? window.__SYMAX_CONFIG__ ?? {} : {};
 
 @Injectable({
   providedIn: 'root',
 })
 export class DirectusService {
-  private baseUrl = environment.directusUrl;
-  private phoenixApiUrl = environment.phoenixApiUrl;
+  private baseUrl = runtimeConfig.directusUrl || environment.directusUrl;
+  private phoenixApiUrl = runtimeConfig.phoenixApiUrl || environment.phoenixApiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +40,7 @@ export class DirectusService {
     const url = `${this.baseUrl}/items/event_portfolio?filter[status][_eq]=${status}&sort=sort,-date`;
     return this.http.get<DirectusResponse<DirectusEvent[]>>(url).pipe(
       map((res) => res.data),
-      catchError(() => of(MOCK_EVENTS.filter((e) => e.status === status))),
+      catchError(() => of([])),
     );
   }
 
@@ -34,10 +49,7 @@ export class DirectusService {
     const url = `${this.baseUrl}/items/event_portfolio?filter[slug][_eq]=${slug}&limit=1`;
     return this.http.get<DirectusResponse<DirectusEvent[]>>(url).pipe(
       map((res) => (res.data.length > 0 ? res.data[0] : null)),
-      catchError(() => {
-        const found = MOCK_EVENTS.find((e) => e.slug === slug) ?? null;
-        return of(found);
-      }),
+      catchError(() => of(null)),
     );
   }
 
@@ -54,9 +66,7 @@ export class DirectusService {
   getScoreboard(eventId: string, apiUrl?: string | null): Observable<ScoreboardEntry[]> {
     const base = apiUrl || this.phoenixApiUrl;
     const url = `${base}/v1/events?event_id=${eventId}`;
-    return this.http.get<ScoreboardEntry[]>(url).pipe(
-      catchError(() => of(MOCK_SCOREBOARD)),
-    );
+    return this.http.get<ScoreboardEntry[]>(url);
   }
 
   /** Fetch the latest published Phoenix download */
@@ -68,13 +78,21 @@ export class DirectusService {
     );
   }
 
+  private resolveFileId(file: string | DirectusFile | null): string | null {
+    if (!file) return null;
+    return typeof file === 'string' ? file : file.id;
+  }
+
   /** Get the full asset URL for a Directus file */
-  getAssetUrl(fileId: string): string {
+  getAssetUrl(file: string | DirectusFile): string {
+    const fileId = this.resolveFileId(file);
+    if (!fileId) return this.baseUrl;
     return `${this.baseUrl}/assets/${fileId}`;
   }
 
   /** Get the full image URL for a Directus file */
-  getImageUrl(fileId: string | null): string | null {
+  getImageUrl(file: string | DirectusFile | null): string | null {
+    const fileId = this.resolveFileId(file);
     if (!fileId) return null;
     return `${this.baseUrl}/assets/${fileId}`;
   }

@@ -5,6 +5,7 @@ import { EventDetailComponent } from './event-detail.component';
 import { DirectusService } from '../../../services/directus.service';
 import { of } from 'rxjs';
 import { MOCK_EVENTS, MOCK_SCOREBOARD } from '../../../services/directus-mock';
+import { DirectusFile } from '../../../services/directus.interfaces';
 
 describe('EventDetailComponent', () => {
   let component: EventDetailComponent;
@@ -79,5 +80,21 @@ describe('EventDetailComponent', () => {
     const el: HTMLElement = fixture.nativeElement;
     const powered = el.querySelector('[data-testid="powered-by-phoenix"]');
     expect(powered?.textContent).toContain('Phoenix');
+  });
+
+  it('should resolve expanded gallery image objects through DirectusService', () => {
+    setup('pumptrack-worlds-2024');
+    const file: DirectusFile = {
+      id: 'gallery-file',
+      filename_download: 'gallery.jpg',
+      title: null,
+      type: 'image/jpeg',
+      filesize: 1024,
+    };
+
+    directusServiceSpy.getImageUrl.and.returnValue('https://cms.symaxsoftware.com/assets/gallery-file');
+
+    expect(component.getGalleryImageUrl(file)).toBe('https://cms.symaxsoftware.com/assets/gallery-file');
+    expect(directusServiceSpy.getImageUrl).toHaveBeenCalledWith(file);
   });
 });

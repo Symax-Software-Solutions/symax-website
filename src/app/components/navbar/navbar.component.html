@@ -26,40 +26,24 @@
           <!-- Racing -->
           <div class="navbar__dropdown-section-label">Racing & Events</div>
           <a class="navbar__dropdown-item" routerLink="/phoenix" (click)="solutionsOpen.set(false)">
-            <div class="navbar__dropdown-icon">⚡</div>
-            <div>
-              <div class="navbar__dropdown-name">Phoenix Timing</div>
-              <div class="navbar__dropdown-desc">Cloud timing & scoring platform</div>
-            </div>
+            <div class="navbar__dropdown-name">Phoenix Timing</div>
+            <div class="navbar__dropdown-desc">Cloud timing & scoring platform</div>
           </a>
           <a class="navbar__dropdown-item" href="https://race-hub.io" target="_blank" rel="noopener noreferrer" (click)="solutionsOpen.set(false)">
-            <div class="navbar__dropdown-icon">🏁</div>
-            <div>
-              <div class="navbar__dropdown-name">RaceHub <span class="navbar__external-icon">↗</span></div>
-              <div class="navbar__dropdown-desc">Event registration platform</div>
+            <div class="navbar__dropdown-name">
+              RaceHub
+              <svg class="navbar__external-icon" width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M4 2h6v6M10 2L4.5 7.5M9 7v3H2V3h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
-          </a>
-
-          <div class="navbar__dropdown-divider"></div>
-
-          <!-- AI -->
-          <div class="navbar__dropdown-section-label">AI & Software</div>
-          <a class="navbar__dropdown-item navbar__dropdown-item--soon" href="#agentic-crew" (click)="solutionsOpen.set(false)">
-            <div class="navbar__dropdown-icon">🤖</div>
-            <div>
-              <div class="navbar__dropdown-name">
-                Agentic Crew
-                <span class="navbar__dropdown-badge">Coming Soon</span>
-              </div>
-              <div class="navbar__dropdown-desc">AI agent observability dashboard</div>
-            </div>
+            <div class="navbar__dropdown-desc">Event registration platform</div>
           </a>
         </div>
       </div>
 
       <a class="navbar__link" routerLink="/events" data-testid="nav-portfolio">Portfolio</a>
-      <a class="navbar__link" href="/#contact" (click)="scrollToContact()">Contact</a>
-      <button class="btn btn--primary btn--sm" (click)="scrollToContact()">Get in Touch</button>
+      <a class="navbar__link" routerLink="/contact">Contact</a>
+      <a class="btn btn--primary btn--sm" routerLink="/contact">Get in Touch</a>
     </div>
 
     <!-- Hamburger -->
@@ -74,18 +58,18 @@
   <div class="navbar__mobile" [class.open]="mobileOpen()">
     <div class="navbar__mobile-section-label">Solutions</div>
     <a class="navbar__mobile-link" routerLink="/phoenix" (click)="closeMobile()">
-      ⚡ Phoenix Timing
+      Phoenix Timing
     </a>
     <a class="navbar__mobile-link" href="https://race-hub.io" target="_blank" rel="noopener noreferrer" (click)="closeMobile()">
-      🏁 RaceHub <span class="navbar__external-icon">↗</span>
-    </a>
-    <a class="navbar__mobile-link navbar__mobile-link--soon" href="#agentic-crew" (click)="closeMobile()">
-      🤖 Agentic Crew <span class="navbar__dropdown-badge">Coming Soon</span>
+      RaceHub
+      <svg class="navbar__external-icon" width="13" height="13" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M4 2h6v6M10 2L4.5 7.5M9 7v3H2V3h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </a>
     <div class="navbar__mobile-divider"></div>
     <a class="navbar__mobile-link" routerLink="/events" (click)="closeMobile()" data-testid="nav-portfolio-mobile">Portfolio</a>
-    <a class="navbar__mobile-link" href="#contact" (click)="closeMobile()">Contact</a>
-    <button class="btn btn--primary" (click)="scrollToContact()">Get in Touch</button>
+    <a class="navbar__mobile-link" routerLink="/contact" (click)="closeMobile()">Contact</a>
+    <a class="btn btn--primary" routerLink="/contact" (click)="closeMobile()">Get in Touch</a>
   </div>
 </nav>
 

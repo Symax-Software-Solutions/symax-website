@@ -25,4 +25,9 @@ export class EventsComponent implements OnInit {
       this.loading.set(false);
     });
   }
+
+  getBackgroundImage(file: DirectusEvent['cover_image']): string | null {
+    const imageUrl = this.directus.getImageUrl(file);
+    return imageUrl ? `url(${imageUrl})` : null;
+  }
 }

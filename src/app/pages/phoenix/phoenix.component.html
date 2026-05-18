@@ -13,10 +13,10 @@
           <p class="phoenix-hero__tagline">{{ content.hero.tagline }}</p>
           <p class="phoenix-hero__description">{{ content.hero.description }}</p>
           <div class="phoenix-hero__actions">
-            <a (click)="scrollTo('download')" class="btn btn--primary btn--lg">
-              Download Phoenix
+            <a href="https://phoenixtiming.com" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+              Visit phoenixtiming.com
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
             <a (click)="scrollTo('contact-phoenix')" class="btn btn--ghost btn--lg">Talk to Us</a>
@@ -91,65 +91,6 @@
             <span class="usecase-chip__label">{{ use.label }}</span>
           </div>
         }
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Download ─────────────────────────────────────────────────────────── -->
-  <section id="download" class="phoenix-download section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Download</span>
-        <h2>{{ content.download.headline }}</h2>
-        <p>{{ content.download.description }}</p>
-      </div>
-
-      <div class="download-meta">
-        <span class="download-meta__item">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2 7l3.5 3.5L12 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Latest: {{ downloadVersion }}
-        </span>
-        <span class="download-meta__item">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M7 4.5V7l1.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          {{ downloadReleaseDate }}
-        </span>
-      </div>
-
-      <div class="download-cards">
-        @for (platform of downloadPlatforms; track platform.os) {
-          <div class="download-card" [class.download-card--available]="platform.available" [class.download-card--soon]="!platform.available">
-            <div class="download-card__icon">{{ platform.icon }}</div>
-            <div class="download-card__info">
-              <h3 class="download-card__os">{{ platform.os }}</h3>
-              @if (platform.available) {
-                <p class="download-card__filename">{{ platform.filename }}</p>
-                <p class="download-card__size">{{ platform.size }}</p>
-              } @else {
-                <p class="download-card__soon-text">Coming soon</p>
-              }
-            </div>
-            @if (platform.available) {
-              <a [href]="platform.url" class="btn btn--primary download-card__btn">
-                Download
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                  <path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            } @else {
-              <span class="download-card__badge-soon">Soon</span>
-            }
-          </div>
-        }
-      </div>
-
-      <div class="release-notes">
-        <h4 class="release-notes__title">{{ downloadVersion }} Release Notes</h4>
-        <p class="release-notes__text">{{ downloadReleaseNotes }}</p>
       </div>
     </div>
   </section>
