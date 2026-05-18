@@ -1,0 +1,10 @@
+.angular
+.git
+.github
+.vscode
+dist
+node_modules
+playwright-report
+test-results
+.env.production
+directus/.env

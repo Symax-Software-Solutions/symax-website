@@ -23,7 +23,6 @@ describe('PhoenixComponent', () => {
   it('content property is defined', () => {
     expect(component.content).toBeDefined();
     expect(component.content.hero).toBeDefined();
-    expect(component.content.download).toBeDefined();
   });
 
   it('leaderboard has 5 entries', () => {
@@ -31,12 +30,9 @@ describe('PhoenixComponent', () => {
     expect(component.leaderboard.length).toBe(5);
   });
 
-  it('template renders download section', () => {
+  it('hero links to phoenixtiming.com', () => {
     const el: HTMLElement = fixture.nativeElement;
-    const download = el.querySelector('#download');
-    expect(download).toBeTruthy();
-
-    const cards = el.querySelectorAll('.download-card');
-    expect(cards.length).toBe(3); // Windows, macOS, Linux
+    const link = el.querySelector('.phoenix-hero__actions a[href*="phoenixtiming.com"]');
+    expect(link).toBeTruthy();
   });
 });

@@ -47,16 +47,6 @@ test.describe('Homepage', () => {
 
     await expect(dropdown.locator('.navbar__dropdown-name', { hasText: 'Phoenix Timing' })).toBeVisible();
     await expect(dropdown.locator('.navbar__dropdown-name', { hasText: 'RaceHub' })).toBeVisible();
-    await expect(dropdown.locator('.navbar__dropdown-name', { hasText: 'Agentic Crew' })).toBeVisible();
-  });
-
-  test('"Coming Soon" badge is visible on Agentic Crew', async ({ page }) => {
-    const dropdownBtn = page.locator('button.navbar__link--dropdown');
-    await dropdownBtn.click();
-
-    const agenticItem = page.locator('.navbar__dropdown-item--soon');
-    await expect(agenticItem).toBeVisible();
-    await expect(agenticItem.locator('.navbar__dropdown-badge')).toContainText('Coming Soon');
   });
 
   test('Solutions dropdown closes when clicking outside', async ({ page }) => {
@@ -74,11 +64,6 @@ test.describe('Homepage', () => {
   test('CTA button "Get in Touch" is visible', async ({ page }) => {
     const cta = page.locator('.hero__actions .btn-ghost', { hasText: 'Get in Touch' });
     await expect(cta).toBeVisible();
-  });
-
-  test('Agentic Crew section exists on the page', async ({ page }) => {
-    const agentic = page.locator('section.agentic');
-    await expect(agentic).toBeAttached();
   });
 
   test('Stats strip shows 4 stats', async ({ page }) => {

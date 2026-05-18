@@ -29,7 +29,7 @@
 
     <!-- Hero -->
     <section class="event-hero" data-testid="event-hero"
-      [style.background-image]="ev.cover_image ? 'url(http://localhost:8055/assets/' + ev.cover_image + ')' : ''">
+      [style.background-image]="getBackgroundImage(ev.cover_image)">
       <div class="event-hero__overlay"></div>
       <div class="container event-hero__inner">
         <a routerLink="/events" class="event-hero__back">← Back to Portfolio</a>
@@ -135,7 +135,7 @@
           <div class="event-gallery__grid">
             @for (photo of ev.gallery; track photo.id) {
               <div class="event-gallery__item">
-                <img [src]="photo.directus_files_id" alt="Event photo" loading="lazy">
+                <img [src]="getGalleryImageUrl(photo.directus_files_id)" alt="Event photo" loading="lazy">
               </div>
             }
           </div>

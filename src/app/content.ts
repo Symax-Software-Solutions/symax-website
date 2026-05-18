@@ -3,10 +3,14 @@
 export const SITE_CONTENT = {
   company: {
     name: 'Symax Software Solutions',
+    legalName: 'Symax Software Solutions B.V.',
     tagline: 'Precision Timing. Live Graphics. One Platform.',
     subtitle: 'Powering the world\'s biggest cycling events since 2022.',
-    email: 'michael.voss@symaxsoftware.com',
+    email: 'info@symaxsoftware.com',
     instagram: 'https://instagram.com/symaxsoftware',
+    kvk: '89520203',
+    vat: 'NL865007974B01',
+    country: 'The Netherlands',
     year: 2026,
   },
 
@@ -161,9 +165,35 @@ export const SITE_CONTENT = {
   ],
 
   contact: {
-    headline: 'Ready to Elevate Your Events?',
-    subtext: 'Whether you\'re timing a local race or the world championships — let\'s talk about what Phoenix can do for you.',
+    eyebrow: 'Get in Touch',
+    headline: 'Let\'s build something fast.',
+    subtext: 'Whether you\'re timing a local race or the next world championships — drop us a line. We usually reply within one business day.',
     email: 'info@symaxsoftware.com',
+    channels: [
+      {
+        key: 'email',
+        title: 'Email Us',
+        description: 'For sales, demos, partnerships, and general questions.',
+        value: 'info@symaxsoftware.com',
+        href: 'mailto:info@symaxsoftware.com',
+        cta: 'Send an email',
+      },
+      {
+        key: 'instagram',
+        title: 'Follow Along',
+        description: 'Behind-the-scenes from the events we power.',
+        value: '@symaxsoftware',
+        href: 'https://instagram.com/symaxsoftware',
+        cta: 'Open Instagram',
+      },
+    ],
+    topics: [
+      'General inquiry',
+      'Phoenix demo / sales',
+      'RaceHub event setup',
+      'Partnership',
+      'Press / media',
+    ],
   },
 
   phoenix: {
@@ -213,43 +243,10 @@ export const SITE_CONTENT = {
       { label: 'BMX Racing', icon: '🏁' },
       { label: 'MTB', icon: '⛰️' },
     ],
-    download: {
-      headline: 'Download Phoenix',
-      description: 'Get the latest version of Phoenix Timing & Scoring. Available for Windows. macOS and Linux coming soon.',
-      version: 'v1.0.0',
-      releaseDate: 'March 2026',
-      releaseNotes: 'First release. Professional race management for pumptrack and road cycling events.',
-      platforms: [
-        {
-          os: 'Windows',
-          icon: '🪟',
-          available: true,
-          filename: 'PhoenixTS1.0.0.exe',
-          url: null,
-          size: '~126 MB',
-        },
-        {
-          os: 'macOS',
-          icon: '🍎',
-          available: false,
-          filename: null,
-          url: null,
-          size: null,
-        },
-        {
-          os: 'Linux',
-          icon: '🐧',
-          available: false,
-          filename: null,
-          url: null,
-          size: null,
-        },
-      ],
-    },
     cta: {
       headline: 'Ready to run your first event?',
       subtext: 'Get in touch and we\'ll have you set up before race day.',
-      email: 'michael.voss@symaxsoftware.com',
+      email: 'info@symaxsoftware.com',
     },
   },
   symaxHome: {
@@ -290,9 +287,6 @@ export const SITE_CONTENT = {
         'Feeds directly into Phoenix for race day',
         'No monthly fees — €1 per registration',
       ],
-    },
-    agentic: {
-      description: 'Agentic Crew is real-time AI agent observability for engineering teams. Monitor your AI crews, track costs, and intervene live — built by the same team that delivers results at UCI World Championships.',
     },
     finalCta: {
       subtext: 'No setup fees. No long-term contracts. Just timing software that works — from pumptracks to World Championships.',

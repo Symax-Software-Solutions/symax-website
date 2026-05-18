@@ -12,8 +12,12 @@ describe('EventsComponent', () => {
   let directusServiceSpy: jasmine.SpyObj<DirectusService>;
 
   beforeEach(async () => {
-    directusServiceSpy = jasmine.createSpyObj('DirectusService', ['getEventPortfolio']);
+    directusServiceSpy = jasmine.createSpyObj('DirectusService', [
+      'getEventPortfolio',
+      'getImageUrl',
+    ]);
     directusServiceSpy.getEventPortfolio.and.returnValue(of(MOCK_EVENTS));
+    directusServiceSpy.getImageUrl.and.returnValue(null);
 
     await TestBed.configureTestingModule({
       imports: [EventsComponent, RouterModule.forRoot([]), HttpClientTestingModule],

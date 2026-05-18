@@ -13,8 +13,8 @@
       </div>
       <div class="footer__link-group">
         <span class="footer__group-title">Company</span>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
+        <a routerLink="/events">Portfolio</a>
+        <a routerLink="/contact">Contact</a>
       </div>
       <div class="footer__link-group">
         <span class="footer__group-title">Legal</span>
@@ -36,7 +36,10 @@
 
   <div class="footer__bottom">
     <div class="container footer__bottom-inner">
-      <span>© {{ content.year }} {{ content.name }}. All rights reserved.</span>
+      <div class="footer__legal">
+        <span>© {{ content.year }} {{ content.legalName }}. All rights reserved.</span>
+        <span class="footer__legal-meta">KVK {{ content.kvk }} · VAT {{ content.vat }}</span>
+      </div>
       <button class="footer__back-top" (click)="scrollToTop()" aria-label="Back to top">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M8 12V4M4 8l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

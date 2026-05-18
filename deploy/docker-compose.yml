@@ -1,0 +1,43 @@
+services:
+  frontend:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - directus
+    environment:
+      SYMAX_DIRECTUS_URL: ${SYMAX_DIRECTUS_URL}
+      SYMAX_PHOENIX_API_URL: ${SYMAX_PHOENIX_API_URL}
+    ports:
+      - "127.0.0.1:8080:80"
+    networks:
+      - web
+
+  directus:
+    image: directus/directus:latest
+    restart: unless-stopped
+    environment:
+      SECRET: ${DIRECTUS_SECRET}
+      DB_CLIENT: sqlite3
+      DB_FILENAME: /directus/database/data.db
+      ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD}
+      PUBLIC_URL: ${DIRECTUS_PUBLIC_URL}
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: ${DIRECTUS_CORS_ORIGIN}
+    ports:
+      - "127.0.0.1:8055:8055"
+    volumes:
+      - directus_db:/directus/database
+      - directus_uploads:/directus/uploads
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
+
+volumes:
+  directus_db:
+  directus_uploads:

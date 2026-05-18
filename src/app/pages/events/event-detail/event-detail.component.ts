@@ -4,7 +4,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NavbarComponent } from '../../../components/navbar/navbar.component';
 import { FooterComponent } from '../../../components/footer/footer.component';
 import { DirectusService } from '../../../services/directus.service';
-import { DirectusEvent, ScoreboardEntry } from '../../../services/directus.interfaces';
+import {
+  DirectusEvent,
+  DirectusEventFile,
+  ScoreboardEntry,
+} from '../../../services/directus.interfaces';
 
 @Component({
   selector: 'app-event-detail',
@@ -54,5 +58,14 @@ export class EventDetailComponent implements OnInit {
         this.scoreboardLoading.set(false);
       },
     });
+  }
+
+  getBackgroundImage(file: DirectusEvent['cover_image']): string | null {
+    const imageUrl = this.directus.getImageUrl(file);
+    return imageUrl ? `url(${imageUrl})` : null;
+  }
+
+  getGalleryImageUrl(file: DirectusEventFile['directus_files_id']): string | null {
+    return this.directus.getImageUrl(file);
   }
 }

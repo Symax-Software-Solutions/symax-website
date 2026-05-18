@@ -18,7 +18,7 @@
  */
 
 const BASE = process.env.DIRECTUS_URL || 'http://localhost:8055'
-const EMAIL = process.env.DIRECTUS_EMAIL || 'michael.voss@symaxsoftware.com'
+const EMAIL = process.env.DIRECTUS_EMAIL || 'info@symaxsoftware.com'
 const PASSWORD = process.env.DIRECTUS_PASSWORD || 'SYmax2026!'
 
 // ─── Auth ────────────────────────────────────────────────────────────────────

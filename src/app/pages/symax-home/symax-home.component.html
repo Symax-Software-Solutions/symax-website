@@ -25,7 +25,7 @@
             See Phoenix
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a [href]="'mailto:' + email" class="btn-ghost">Get in Touch</a>
+          <a routerLink="/contact" class="btn-ghost">Get in Touch</a>
         </div>
       </div>
 
@@ -247,26 +247,6 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <!-- AGENTIC CREW                                                             -->
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="agentic">
-    <div class="agentic__bg">
-      <div class="agentic__orb agentic__orb--1"></div>
-      <div class="agentic__orb agentic__orb--2"></div>
-      <div class="agentic__grid"></div>
-    </div>
-    <div class="container agentic__inner" #animEl>
-      <span class="agentic__eyebrow">Beyond Racing</span>
-      <h2 class="agentic__headline">Software that thinks.</h2>
-      <p class="agentic__sub">{{ content.agentic.description }}</p>
-      <a href="https://agenticcrew.io" target="_blank" rel="noopener" class="btn-agentic">
-        Explore Agentic Crew
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
   <!-- FINAL CTA                                                                -->
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
   <section class="final-cta">
@@ -274,7 +254,7 @@
       <h2 class="final-cta__headline">Ready to modernize your timing?</h2>
       <p class="final-cta__sub">{{ content.finalCta.subtext }}</p>
       <div class="final-cta__actions">
-        <a [href]="'mailto:' + email" class="btn-primary btn-primary--lg">
+        <a routerLink="/contact" class="btn-primary btn-primary--lg">
           Book a Demo
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>

@@ -114,9 +114,7 @@
   }
 
   &__dropdown-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+    display: block;
     padding: 10px 12px;
     border-radius: var(--radius-sm);
     color: rgba(255,255,255,0.85);
@@ -132,12 +130,6 @@
       cursor: default;
       pointer-events: none;
     }
-  }
-
-  &__dropdown-icon {
-    font-size: 1.1rem;
-    line-height: 1.4;
-    flex-shrink: 0;
   }
 
   &__dropdown-name {
@@ -175,9 +167,11 @@
   }
 
   &__external-icon {
-    font-size: 0.7em;
-    opacity: 0.6;
-    margin-left: 2px;
+    display: inline-block;
+    vertical-align: -1px;
+    opacity: 0.55;
+    margin-left: 6px;
+    color: currentColor;
   }
 
   &__mobile-section-label {

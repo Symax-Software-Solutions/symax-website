@@ -1,8 +1,8 @@
-# Directus CMS — Symax Website
+# Directus CMS - Symax Website
 
-Directus powers the dynamic content for the Symax website (event portfolio, testimonials, etc.).
+Directus powers the dynamic content for the Symax website, including event portfolio entries, testimonials, and Phoenix downloads.
 
-## Quick Start
+## Quick start
 
 ```bash
 cd directus
@@ -11,14 +11,13 @@ docker compose up -d
 
 Admin panel: **http://localhost:8055**
 
-- Email: `michael.voss@symaxsoftware.com`
-- Password: `SYmax2026!`
+Optional local overrides can be added in `directus/.env`.
 
-## Setting Up Collections
+## Setting up collections
 
 After first launch, create the collections described in [`schema.md`](./schema.md):
 
-1. Open Directus Admin → Settings → Data Model
+1. Open Directus Admin -> Settings -> Data Model
 2. Create the `event_portfolio` collection with all fields
 3. Create the `testimonials` collection with all fields
 4. Set the "Status" field as the status interface for each collection
@@ -26,25 +25,29 @@ After first launch, create the collections described in [`schema.md`](./schema.m
 
 ## CORS
 
-CORS is pre-configured to allow requests from `http://localhost:4400` (Angular dev server).
-For production, update `CORS_ORIGIN` in the docker-compose file.
+CORS is pre-configured to allow requests from `http://localhost:4400` during local Angular development.
 
 ## Volumes
 
 Data is persisted in Docker volumes:
-- `directus_db` — SQLite database
-- `directus_uploads` — Uploaded images/files
+
+- `directus_db` - SQLite database
+- `directus_uploads` - uploaded images and files
 
 To reset everything:
+
 ```bash
 docker compose down -v
 docker compose up -d
 ```
 
-## Production Notes
+## Production notes
 
 Before deploying to production:
-1. Change `SECRET` to a secure random string
-2. Change `ADMIN_PASSWORD`
-3. Update `PUBLIC_URL` and `CORS_ORIGIN` to match your domain
-4. Consider switching from SQLite to PostgreSQL for better performance
+
+1. Create the root `.env.production` file from `.env.production.example`
+2. Set a secure `DIRECTUS_SECRET`
+3. Set `DIRECTUS_ADMIN_EMAIL` and `DIRECTUS_ADMIN_PASSWORD`
+4. Set `DIRECTUS_PUBLIC_URL=https://cms.symaxsoftware.com`
+5. Set `DIRECTUS_CORS_ORIGIN=https://symaxsoftware.com`
+6. Consider switching from SQLite to PostgreSQL for larger-scale usage

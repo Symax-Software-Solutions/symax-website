@@ -38,7 +38,7 @@ test.describe('Navbar', () => {
     await expect(mobileMenu).toHaveClass(/open/);
   });
 
-  test('mobile menu contains Phoenix Timing, RaceHub, Agentic Crew', async ({ page }) => {
+  test('mobile menu contains Phoenix Timing and RaceHub', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto('/');
     await page.waitForLoadState('networkidle');
@@ -48,7 +48,6 @@ test.describe('Navbar', () => {
     const mobileMenu = page.locator('.navbar__mobile');
     await expect(mobileMenu.locator('.navbar__mobile-link', { hasText: 'Phoenix Timing' })).toBeVisible();
     await expect(mobileMenu.locator('.navbar__mobile-link', { hasText: 'RaceHub' })).toBeVisible();
-    await expect(mobileMenu.locator('.navbar__mobile-link', { hasText: 'Agentic Crew' })).toBeVisible();
   });
 
   test('desktop navbar shows Solutions, Racing, Contact links', async ({ page }) => {

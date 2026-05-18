@@ -1,0 +1,199 @@
+<app-navbar></app-navbar>
+
+<main class="contact-page">
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- HERO                                                                    -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="contact-hero">
+    <div class="contact-hero__bg">
+      <div class="contact-hero__grid"></div>
+      <div class="contact-hero__orb contact-hero__orb--blue"></div>
+      <div class="contact-hero__orb contact-hero__orb--purple"></div>
+    </div>
+
+    <div class="container contact-hero__inner" #animEl>
+      <span class="contact-hero__eyebrow">
+        <span class="contact-hero__live-dot"></span>
+        {{ content.eyebrow }}
+      </span>
+      <h1 class="contact-hero__headline">{{ content.headline }}</h1>
+      <p class="contact-hero__sub">{{ content.subtext }}</p>
+
+      <div class="contact-hero__quick">
+        <button class="quick-pill" (click)="copyEmail()" type="button">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M2 4h12v9H2zM2 4l6 5 6-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>{{ content.email }}</span>
+          <span class="quick-pill__copy" [class.quick-pill__copy--visible]="copied()">{{ copied() ? 'Copied' : 'Copy' }}</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MAIN: FORM + CHANNELS                                                   -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="contact-main">
+    <div class="container contact-main__inner">
+
+      <!-- Left: Channels & business card -->
+      <aside class="contact-side" #animEl>
+        <div class="side-card">
+          <div class="side-card__bar">
+            <span class="side-card__dot"></span>
+            <span class="side-card__dot"></span>
+            <span class="side-card__dot"></span>
+            <span class="side-card__title">contact_channels.json</span>
+          </div>
+          <div class="side-card__body">
+            @for (channel of content.channels; track channel.key) {
+              <a class="channel"
+                 [href]="channel.href"
+                 [target]="channel.key === 'instagram' ? '_blank' : null"
+                 [rel]="channel.key === 'instagram' ? 'noopener noreferrer' : null">
+                <div class="channel__icon">
+                  @switch (channel.key) {
+                    @case ('email') {
+                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                        <path d="M2 5h16v11H2zM2 5l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    }
+                    @case ('instagram') {
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                      </svg>
+                    }
+                  }
+                </div>
+                <div class="channel__text">
+                  <div class="channel__title">{{ channel.title }}</div>
+                  <div class="channel__desc">{{ channel.description }}</div>
+                  <div class="channel__value">{{ channel.value }}</div>
+                </div>
+                <svg class="channel__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            }
+          </div>
+        </div>
+
+        <!-- Business details -->
+        <div class="biz-card" #animEl>
+          <div class="biz-card__header">
+            <span class="biz-card__label">Registered Entity</span>
+            <h3 class="biz-card__name">{{ company.legalName }}</h3>
+            <span class="biz-card__country">{{ company.country }}</span>
+          </div>
+          <dl class="biz-card__list">
+            <div class="biz-row">
+              <dt>KVK</dt>
+              <dd>{{ company.kvk }}</dd>
+            </div>
+            <div class="biz-row">
+              <dt>VAT</dt>
+              <dd>{{ company.vat }}</dd>
+            </div>
+            <div class="biz-row">
+              <dt>Email</dt>
+              <dd>
+                <a [href]="'mailto:' + company.email">{{ company.email }}</a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </aside>
+
+      <!-- Right: Form -->
+      <div class="contact-form-wrap" #animEl>
+        <div class="form-card">
+          <div class="form-card__bar">
+            <span class="form-card__dot form-card__dot--red"></span>
+            <span class="form-card__dot form-card__dot--yellow"></span>
+            <span class="form-card__dot form-card__dot--green"></span>
+            <span class="form-card__title">new_inquiry.form</span>
+            <span class="form-card__status">
+              <span class="form-card__status-dot"></span>
+              READY
+            </span>
+          </div>
+
+          @if (submitted()) {
+            <div class="form-success">
+              <div class="form-success__icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="form-success__title">Opening your mail app…</h3>
+              <p class="form-success__text">
+                If nothing happened, send your note directly to
+                <a [href]="'mailto:' + content.email">{{ content.email }}</a>.
+              </p>
+              <button type="button" class="form-success__reset" (click)="submitted.set(false)">Send another</button>
+            </div>
+          } @else {
+            <form class="form" (ngSubmit)="submitForm()">
+              <div class="form__row form__row--two">
+                <div class="form__group">
+                  <label for="name">Your name</label>
+                  <input id="name" name="name" type="text" required
+                         [(ngModel)]="form.name" placeholder="Jane Doe">
+                </div>
+                <div class="form__group">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" required
+                         [(ngModel)]="form.email" placeholder="you@team.com">
+                </div>
+              </div>
+
+              <div class="form__group">
+                <label for="company">Company <span class="form__optional">(optional)</span></label>
+                <input id="company" name="company" type="text"
+                       [(ngModel)]="form.company" placeholder="Your timing crew or event">
+              </div>
+
+              <div class="form__group">
+                <label>What's this about?</label>
+                <div class="topic-grid">
+                  @for (topic of content.topics; track topic) {
+                    <label class="topic"
+                           [class.topic--active]="form.topic === topic">
+                      <input type="radio" name="topic" [value]="topic" [(ngModel)]="form.topic">
+                      <span>{{ topic }}</span>
+                    </label>
+                  }
+                </div>
+              </div>
+
+              <div class="form__group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required
+                          [(ngModel)]="form.message"
+                          placeholder="Tell us about the event, dates, what you're hoping for…"></textarea>
+              </div>
+
+              <div class="form__footer">
+                <button type="submit" class="form__submit">
+                  Send Message
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <span class="form__hint">Opens your email client with the message pre-filled.</span>
+              </div>
+            </form>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<app-footer></app-footer>

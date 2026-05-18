@@ -7,6 +7,7 @@ export const routes: Routes = [
   { path: 'phoenix', loadComponent: () => import('./pages/phoenix/phoenix.component').then(m => m.PhoenixComponent) },
   { path: 'events', loadComponent: () => import('./pages/events/events.component').then(m => m.EventsComponent) },
   { path: 'events/:slug', loadComponent: () => import('./pages/events/event-detail/event-detail.component').then(m => m.EventDetailComponent) },
+  { path: 'contact', loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactPageComponent) },
   { path: 'portfolio/:id', component: HomeComponent },
   { path: '**', redirectTo: '' },
 ];
